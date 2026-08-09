@@ -20,9 +20,9 @@ texture_filter = 1
 texture = ExtResource("1_v0iea")
 
 [node name="coyoteTimer" type="Timer" parent="." unique_id=1298793276]
-wait_time = 0.25
+wait_time = 0.1
 one_shot = true
 
 [node name="jumpTimer" type="Timer" parent="." unique_id=1194143752]
-wait_time = 0.25
+wait_time = 0.1
 one_shot = true

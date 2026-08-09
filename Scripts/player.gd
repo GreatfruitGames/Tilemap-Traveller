@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 @export var coyoteTimer : Timer
 @export var jumpTimer : Timer
-@export var label : Label
 
 var jumping = false
 var fall_gravity = 1000
+var coyoteStarted = false
 
 const SPEED = 50.0
 const JUMP_VELOCITY = -210.0
@@ -18,25 +18,26 @@ func getGravity():
 		return get_gravity().y
 
 func _physics_process(delta: float) -> void:
-	label.text = "Coyote: " + str(coyoteTimer.time_left) + "\n" + "Jump: " + str(jumpTimer.time_left)
 
 	if is_on_floor():
 		jumping = false
+		coyoteStarted = false
 
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += getGravity() * delta
-		if not jumping && not coyoteTimer.time_left > 0:
+		if not jumping && coyoteTimer.is_stopped() and coyoteStarted == false:
+			coyoteStarted = true
 			coyoteTimer.start()
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyoteTimer.time_left > 0):
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyoteTimer.is_stopped() == false):
 		jumping = true
 		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_just_pressed("jump") and not is_on_floor() and not coyoteTimer.time_left > 0:
+	elif Input.is_action_just_pressed("jump") and not is_on_floor() and coyoteTimer.is_stopped():
 		jumpTimer.start()
 		await jumpTimer.timeout
-		if is_on_floor():
+		if is_on_floor() and Input.is_action_pressed("jump"):
 			jumping = true
 			velocity.y = JUMP_VELOCITY
 	
