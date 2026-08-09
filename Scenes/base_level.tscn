@@ -98,6 +98,6 @@ leftScreen = 0
 
 [node name="round enemy2" parent="Screen Base2" unique_id=320112203 node_paths=PackedStringArray("level") instance=ExtResource("7_4rblm")]
 position = Vector2(81, 65)
-enemy_type = "Bouncer"
+enemy_type = "Chlyer"
 level = NodePath("../..")
 layer = 1
