@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://jm7rfl1pnyun"]
+
+[ext_resource type="Script" uid="uid://cr1y4owlh7cxg" path="res://Scripts/screen_base.gd" id="1_0x8sd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tty2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uirbe"]
+size = Vector2(4, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x8sd"]
+size = Vector2(4, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0we8"]
+size = Vector2(128, 4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tty2r"]
+b = Vector2(0, 128)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0x8sd"]
+b = Vector2(-128, 0)
+
+[node name="Screen Base" type="Node2D" unique_id=1809321133 node_paths=PackedStringArray("rectangle", "label", "cameraSpot", "leftSpawn", "rightSpawn", "topSpawn", "bottomSpawn", "leftDoor", "rightDoor", "bottomDoor", "topDoor")]
+script = ExtResource("1_0x8sd")
+rectangle = NodePath("ReferenceRect")
+label = NodePath("Label")
+cameraSpot = NodePath("cameraSpot")
+leftSpawn = NodePath("leftSpawnSpot")
+rightSpawn = NodePath("rightSpawnSpot")
+topSpawn = NodePath("topSpawnSpot")
+bottomSpawn = NodePath("bottomSpawnSpot")
+leftDoor = NodePath("left")
+rightDoor = NodePath("right")
+bottomDoor = NodePath("floor")
+topDoor = NodePath("ceiling")
+rightScreen = -1
+leftScreen = -1
+topScreen = -1
+bottomScreen = -1
+
+[node name="Label" type="Label" parent="." unique_id=1017573987]
+offset_right = 128.0
+offset_bottom = 128.0
+text = "#"
+label_settings = SubResource("LabelSettings_tty2r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1768552358]
+offset_right = 128.0
+offset_bottom = 128.0
+border_color = Color(0.47275236, 0.73934126, 0.047578678, 1)
+
+[node name="cameraSpot" type="Marker2D" parent="." unique_id=923864960]
+position = Vector2(64, 64)
+
+[node name="leftSpawnSpot" type="Marker2D" parent="." unique_id=459394748]
+position = Vector2(8, 64)
+
+[node name="rightSpawnSpot" type="Marker2D" parent="." unique_id=378607321]
+position = Vector2(120, 64)
+
+[node name="topSpawnSpot" type="Marker2D" parent="." unique_id=1678751626]
+position = Vector2(64, 8)
+
+[node name="bottomSpawnSpot" type="Marker2D" parent="." unique_id=1650447305]
+position = Vector2(64, 120)
+
+[node name="left" type="Area2D" parent="." unique_id=174304863]
+position = Vector2(0, 64)
+collision_layer = 0
+input_pickable = false
+monitorable = false
+
+[node name="leftWall" type="CollisionShape2D" parent="left" unique_id=1844885012]
+position = Vector2(1.75, 0)
+shape = SubResource("RectangleShape2D_uirbe")
+
+[node name="right" type="Area2D" parent="." unique_id=1195949771]
+position = Vector2(128, 64)
+collision_layer = 0
+input_pickable = false
+monitorable = false
+
+[node name="rightWall" type="CollisionShape2D" parent="right" unique_id=1199112115]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_0x8sd")
+
+[node name="floor" type="Area2D" parent="." unique_id=1218827594]
+position = Vector2(64, 128)
+collision_layer = 0
+input_pickable = false
+monitorable = false
+
+[node name="floorWall" type="CollisionShape2D" parent="floor" unique_id=1844677543]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_w0we8")
+
+[node name="ceiling" type="Area2D" parent="." unique_id=1666677192]
+position = Vector2(64, 0)
+collision_layer = 0
+input_pickable = false
+monitorable = false
+
+[node name="ceilingWall" type="CollisionShape2D" parent="ceiling" unique_id=672212038]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_w0we8")
+
+[node name="enemyBarrierLeft" type="StaticBody2D" parent="." unique_id=1490585482]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBarrierLeft" unique_id=1676533644]
+shape = SubResource("SegmentShape2D_tty2r")
+
+[node name="enemyBarrierRight" type="StaticBody2D" parent="." unique_id=1298719212]
+position = Vector2(128, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBarrierRight" unique_id=1070727603]
+shape = SubResource("SegmentShape2D_tty2r")
+
+[node name="enemyBarrierTop" type="StaticBody2D" parent="." unique_id=1736972372]
+position = Vector2(128, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBarrierTop" unique_id=320509974]
+shape = SubResource("SegmentShape2D_0x8sd")
+
+[node name="enemyBarrierBottom" type="StaticBody2D" parent="." unique_id=1793587587]
+position = Vector2(128, 128)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyBarrierBottom" unique_id=1619500230]
+shape = SubResource("SegmentShape2D_0x8sd")
+
+[connection signal="body_entered" from="left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="floor" to="." method="_on_floor_body_entered"]
+[connection signal="body_entered" from="ceiling" to="." method="_on_ceiling_body_entered"]
