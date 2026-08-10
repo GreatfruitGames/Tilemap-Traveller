@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+@export var lives_tracker : RichTextLabel
+@export var coins_tracker : RichTextLabel
+
 @export var health = 5
 @export var max_health = 5
 @export var health_container : HBoxContainer
@@ -25,6 +28,11 @@ var respawn_coords = Vector2(0,0)
 var respawn_layer = 0
 
 @export var level : Node2D
+
+var worldManager
+
+func _ready() -> void:
+	worldManager = get_node("/root/Game Manager")
 
 # Used to determine the gravity based on whether the player is jumping or just falling
 func getGravity():
@@ -85,7 +93,7 @@ func damage(value : int):
 		die()
 
 func die():
-	pass
+	worldManager.player_lives -= 1
 
 func respawn():
 	level.activeMap = respawn_layer

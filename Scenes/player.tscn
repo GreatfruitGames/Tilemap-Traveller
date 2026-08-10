@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nb0whljduthd" path="res://Art/Player.png" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://csid7bivl7x0v" path="res://Art/heart-Sheet.png" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://vl35oxp0liyc" path="res://Scripts/health_container.gd" id="3_vgqql"]
+[ext_resource type="Texture2D" uid="uid://y1s65iuonxqj" path="res://Art/coin-Sheet.png" id="5_fkybt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7ey7"]
 radius = 4.0
@@ -68,9 +69,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=201996133 node_paths=PackedStringArray("health_container", "respawn_cast", "coyoteTimer", "jumpTimer", "immunityTimer")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
+bg_color = Color(0.96731794, 0.64980984, 0.6381937, 0.5019608)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tty2r"]
+atlas = ExtResource("5_fkybt")
+region = Rect2(0, 0, 8, 8)
+
+[node name="Player" type="CharacterBody2D" unique_id=201996133 node_paths=PackedStringArray("lives_tracker", "coins_tracker", "health_container", "respawn_cast", "coyoteTimer", "jumpTimer", "immunityTimer")]
 collision_mask = 6
 script = ExtResource("1_cvnsp")
+lives_tracker = NodePath("CanvasLayer/PanelContainer/RichTextLabel")
+coins_tracker = NodePath("CanvasLayer/PanelContainer2/RichTextLabel")
 health_container = NodePath("CanvasLayer/HUD Container/Health Container")
 respawn_cast = NodePath("RayCast2D")
 coyoteTimer = NodePath("coyoteTimer")
@@ -145,6 +155,42 @@ layout_mode = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/HUD Container/Health Container/heart5" unique_id=1130698216]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_tty2r")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=830246461]
+offset_top = 11.0
+offset_right = 18.0
+offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vgqql")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer" unique_id=735251169]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+text = " 5"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/PanelContainer" unique_id=395690283]
+texture_filter = 1
+position = Vector2(12, 6)
+texture = ExtResource("1_v0iea")
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer" unique_id=1324440786]
+offset_left = 18.0
+offset_top = 11.0
+offset_right = 33.0
+offset_bottom = 23.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vgqql")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer2" unique_id=213973979]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+text = " 0"
+fit_content = true
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/PanelContainer2" unique_id=1573369764]
+texture_filter = 1
+position = Vector2(11, 6)
+scale = Vector2(0.99999994, 0.99999994)
+texture = SubResource("AtlasTexture_tty2r")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=632779830]
 target_position = Vector2(0, 3)

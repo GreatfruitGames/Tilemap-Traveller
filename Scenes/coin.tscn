@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://begb51drx04uo"]
+
+[ext_resource type="Script" uid="uid://dij0mx1c0q80v" path="res://Scripts/coin.gd" id="1_jgi06"]
+[ext_resource type="Texture2D" uid="uid://y1s65iuonxqj" path="res://Art/coin-Sheet.png" id="2_g537i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2p6v"]
+atlas = ExtResource("2_g537i")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffmqm"]
+atlas = ExtResource("2_g537i")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81h6x"]
+atlas = ExtResource("2_g537i")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tty2r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2p6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffmqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81h6x")
+}],
+"loop": 2,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tty2r"]
+radius = 2.0
+height = 8.0
+
+[node name="Coin" type="Node2D" unique_id=626612366]
+script = ExtResource("1_jgi06")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=558343369]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tty2r")
+autoplay = "default"
+frame_progress = 0.5907102
+
+[node name="Area2D" type="Area2D" parent="." unique_id=652634251]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1488689786]
+shape = SubResource("CapsuleShape2D_tty2r")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
