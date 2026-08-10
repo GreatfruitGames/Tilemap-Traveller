@@ -68,10 +68,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=201996133 node_paths=PackedStringArray("health_container", "coyoteTimer", "jumpTimer", "immunityTimer")]
+[node name="Player" type="CharacterBody2D" unique_id=201996133 node_paths=PackedStringArray("health_container", "respawn_cast", "coyoteTimer", "jumpTimer", "immunityTimer")]
 collision_mask = 6
 script = ExtResource("1_cvnsp")
 health_container = NodePath("CanvasLayer/HUD Container/Health Container")
+respawn_cast = NodePath("RayCast2D")
 coyoteTimer = NodePath("coyoteTimer")
 jumpTimer = NodePath("jumpTimer")
 immunityTimer = NodePath("immunityTimer")
@@ -144,3 +145,8 @@ layout_mode = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/HUD Container/Health Container/heart5" unique_id=1130698216]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_tty2r")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=632779830]
+target_position = Vector2(0, 3)
+collision_mask = 2
+hit_from_inside = true

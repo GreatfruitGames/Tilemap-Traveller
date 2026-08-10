@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bjt5ouu1h315k"]
 
 [ext_resource type="Script" uid="uid://dgtmqml4vxcfs" path="res://Scripts/map_level.gd" id="1_ci6au"]
-[ext_resource type="PackedScene" uid="uid://dwjxhrgl7qc65" path="res://Scenes/base_level.tscn" id="2_26yhd"]
+[ext_resource type="PackedScene" uid="uid://dc8vfn5h04sbn" path="res://Scenes/level1.tscn" id="2_26yhd"]
+[ext_resource type="PackedScene" uid="uid://c354i6d43j1bd" path="res://Scenes/level_2.tscn" id="3_p3ir5"]
 
 [node name="Map" type="Control" unique_id=1419961583]
 layout_mode = 3
@@ -19,8 +20,50 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Line2D" type="Line2D" parent="." unique_id=47620765]
+position = Vector2(19, 19)
+points = PackedVector2Array(0, 0, 1, 67)
+width = 1.0
+default_color = Color(1, 1, 1, 0.65882355)
+antialiased = true
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=1253302258]
+position = Vector2(19, 19)
+points = PackedVector2Array(1, 67, 38, 48)
+width = 1.0
+default_color = Color(1, 1, 1, 0.65882355)
+antialiased = true
+
+[node name="Line2D3" type="Line2D" parent="." unique_id=2071459962]
+position = Vector2(19, 19)
+points = PackedVector2Array(38, 48, 52, 17)
+width = 1.0
+default_color = Color(1, 1, 1, 0.65882355)
+antialiased = true
+
+[node name="Line2D4" type="Line2D" parent="." unique_id=565309880]
+position = Vector2(19, 19)
+points = PackedVector2Array(52, 17, 85, 3)
+width = 1.0
+default_color = Color(1, 1, 1, 0.65882355)
+antialiased = true
+
+[node name="Line2D5" type="Line2D" parent="." unique_id=835930187]
+position = Vector2(19, 19)
+points = PackedVector2Array(85, 3, 93, 68)
+width = 1.0
+default_color = Color(1, 1, 1, 0.65882355)
+antialiased = true
+
+[node name="Line2D6" type="Line2D" parent="." unique_id=931267339]
+position = Vector2(19, 19)
+points = PackedVector2Array(93, 68, 46, 90)
+width = 1.0
+default_color = Color(1, 1, 1, 0.65882355)
+antialiased = true
+
 [node name="Level 1" type="Node2D" parent="." unique_id=200237300]
-position = Vector2(22, 37)
+position = Vector2(15, 15)
 script = ExtResource("1_ci6au")
 targetLevel = ExtResource("2_26yhd")
 
@@ -29,5 +72,79 @@ targetLevel = ExtResource("2_26yhd")
 [node name="Button" type="Button" parent="Level 1" unique_id=1571551187]
 offset_right = 8.0
 offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Level 2" type="Node2D" parent="." unique_id=792354915]
+position = Vector2(16, 82)
+script = ExtResource("1_ci6au")
+targetLevel = ExtResource("3_p3ir5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level 2" unique_id=2023705371]
+
+[node name="Button" type="Button" parent="Level 2" unique_id=74878187]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Level 3" type="Node2D" parent="." unique_id=878582087]
+position = Vector2(53, 63)
+script = ExtResource("1_ci6au")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level 3" unique_id=265360586]
+
+[node name="Button" type="Button" parent="Level 3" unique_id=1826046259]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Level 4" type="Node2D" parent="." unique_id=483489267]
+position = Vector2(67, 32)
+script = ExtResource("1_ci6au")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level 4" unique_id=1176972419]
+
+[node name="Button" type="Button" parent="Level 4" unique_id=1724825088]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Level 5" type="Node2D" parent="." unique_id=153147035]
+position = Vector2(100, 18)
+script = ExtResource("1_ci6au")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level 5" unique_id=1598391243]
+
+[node name="Button" type="Button" parent="Level 5" unique_id=1861680359]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Level 6" type="Node2D" parent="." unique_id=2010939604]
+position = Vector2(108, 83)
+script = ExtResource("1_ci6au")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level 6" unique_id=2009543697]
+
+[node name="Button" type="Button" parent="Level 6" unique_id=399304476]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Level 7" type="Node2D" parent="." unique_id=1243506934]
+position = Vector2(61, 105)
+script = ExtResource("1_ci6au")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level 7" unique_id=2068294309]
+
+[node name="Button" type="Button" parent="Level 7" unique_id=1694935739]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Level 1/Button" to="Level 1" method="_on_button_pressed"]
+[connection signal="pressed" from="Level 2/Button" to="Level 2" method="_on_button_pressed"]
+[connection signal="pressed" from="Level 3/Button" to="Level 3" method="_on_button_pressed"]
+[connection signal="pressed" from="Level 4/Button" to="Level 4" method="_on_button_pressed"]
+[connection signal="pressed" from="Level 5/Button" to="Level 5" method="_on_button_pressed"]
+[connection signal="pressed" from="Level 6/Button" to="Level 6" method="_on_button_pressed"]
+[connection signal="pressed" from="Level 7/Button" to="Level 7" method="_on_button_pressed"]

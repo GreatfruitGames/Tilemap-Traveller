@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var max_health = 5
 @export var health_container : HBoxContainer
 
+@export var respawn_cast : RayCast2D
+
 # Exports for jump related timers
 @export var coyoteTimer : Timer
 @export var jumpTimer : Timer
@@ -33,6 +35,10 @@ func getGravity():
 
 
 func _physics_process(delta: float) -> void:
+	if respawn_cast.is_colliding():
+		respawn()
+
+
 	# Resets floor dependent variables
 	if is_on_floor():
 		jumping = false
@@ -83,4 +89,5 @@ func die():
 
 func respawn():
 	level.activeMap = respawn_layer
+	await get_tree().create_timer(1.0).timeout
 	self.global_position = respawn_coords
