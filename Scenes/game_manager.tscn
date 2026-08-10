@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://etm4j2p3gwqj"]
 
-[node name="Game Manager" type="Node2D" unique_id=936264712]
+[ext_resource type="Script" uid="uid://cinet8f7eb7hh" path="res://Scripts/game_manager.gd" id="1_oj352"]
+[ext_resource type="PackedScene" uid="uid://bjt5ouu1h315k" path="res://Scenes/map.tscn" id="2_e5fcp"]
+
+[node name="Game Manager" type="Node2D" unique_id=936264712 node_paths=PackedStringArray("map")]
+script = ExtResource("1_oj352")
+map = NodePath("Map")
+
+[node name="Map" parent="." unique_id=1419961583 instance=ExtResource("2_e5fcp")]

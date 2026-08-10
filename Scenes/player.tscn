@@ -2,15 +2,79 @@
 
 [ext_resource type="Script" uid="uid://cb5llohlx4gv4" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://nb0whljduthd" path="res://Art/Player.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://csid7bivl7x0v" path="res://Art/heart-Sheet.png" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://vl35oxp0liyc" path="res://Scripts/health_container.gd" id="3_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7ey7"]
 radius = 4.0
 
-[node name="Player" type="CharacterBody2D" unique_id=201996133 node_paths=PackedStringArray("coyoteTimer", "jumpTimer")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tty2r"]
+bg_color = Color(0.96731794, 0.64980984, 0.6381937, 0.5019608)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tty2r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3smsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8erm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ek2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx1dd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=201996133 node_paths=PackedStringArray("health_container", "coyoteTimer", "jumpTimer", "immunityTimer")]
 collision_mask = 6
 script = ExtResource("1_cvnsp")
+health_container = NodePath("CanvasLayer/HUD Container/Health Container")
 coyoteTimer = NodePath("coyoteTimer")
 jumpTimer = NodePath("jumpTimer")
+immunityTimer = NodePath("immunityTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=734630019]
 shape = SubResource("CircleShape2D_l7ey7")
@@ -26,3 +90,57 @@ one_shot = true
 [node name="jumpTimer" type="Timer" parent="." unique_id=1194143752]
 wait_time = 0.1
 one_shot = true
+
+[node name="immunityTimer" type="Timer" parent="." unique_id=1426814432]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=946316662]
+
+[node name="HUD Container" type="PanelContainer" parent="CanvasLayer" unique_id=678632805]
+offset_top = 2.0
+offset_right = 46.0
+offset_bottom = 11.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tty2r")
+
+[node name="Health Container" type="HBoxContainer" parent="CanvasLayer/HUD Container" unique_id=1827396940 node_paths=PackedStringArray("icons")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 9
+script = ExtResource("3_vgqql")
+icons = [NodePath("heart/AnimatedSprite2D"), NodePath("heart2/AnimatedSprite2D"), NodePath("heart3/AnimatedSprite2D"), NodePath("heart4/AnimatedSprite2D"), NodePath("heart5/AnimatedSprite2D")]
+
+[node name="heart" type="Panel" parent="CanvasLayer/HUD Container/Health Container" unique_id=1031012116]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/HUD Container/Health Container/heart" unique_id=878991428]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tty2r")
+
+[node name="heart2" type="Panel" parent="CanvasLayer/HUD Container/Health Container" unique_id=702302797]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/HUD Container/Health Container/heart2" unique_id=1041726487]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tty2r")
+
+[node name="heart3" type="Panel" parent="CanvasLayer/HUD Container/Health Container" unique_id=1118053321]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/HUD Container/Health Container/heart3" unique_id=1879049737]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tty2r")
+
+[node name="heart4" type="Panel" parent="CanvasLayer/HUD Container/Health Container" unique_id=1460425868]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/HUD Container/Health Container/heart4" unique_id=735174384]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tty2r")
+
+[node name="heart5" type="Panel" parent="CanvasLayer/HUD Container/Health Container" unique_id=715659966]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/HUD Container/Health Container/heart5" unique_id=1130698216]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tty2r")

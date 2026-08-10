@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bjt5ouu1h315k"]
+
+[ext_resource type="Script" uid="uid://dgtmqml4vxcfs" path="res://Scripts/map_level.gd" id="1_ci6au"]
+[ext_resource type="PackedScene" uid="uid://dwjxhrgl7qc65" path="res://Scenes/base_level.tscn" id="2_26yhd"]
+
+[node name="Map" type="Control" unique_id=1419961583]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="NinePatchRect" parent="." unique_id=36093528]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level 1" type="Node2D" parent="." unique_id=200237300]
+position = Vector2(22, 37)
+script = ExtResource("1_ci6au")
+targetLevel = ExtResource("2_26yhd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level 1" unique_id=765567889]
+
+[node name="Button" type="Button" parent="Level 1" unique_id=1571551187]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Level 1/Button" to="Level 1" method="_on_button_pressed"]

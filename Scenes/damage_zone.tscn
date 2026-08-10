@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://beqc7nry5khf2"]
+
+[ext_resource type="Script" uid="uid://man0hk5f820e" path="res://Scripts/damage_zone.gd" id="1_otso3"]
+
+[node name="Damage Zone" type="Area2D" unique_id=1866356009]
+collision_layer = 4
+input_pickable = false
+monitorable = false
+script = ExtResource("1_otso3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

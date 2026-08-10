@@ -4,7 +4,10 @@ extends RigidBody2D
 @export var bounceTimer : Timer
 @export var level : Node2D
 @export var detector : Area2D
+@export var restricted = true
+@export var translucent = false
 
+var offScreen = true
 var target
 
 # The layer the enemy is on
@@ -12,6 +15,8 @@ var target
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if translucent == true:
+		set_collision_mask_value(2, false)
 	if enemy_type == "Flyer" or enemy_type == "Chlyer":
 		gravity_scale = 0
 		physics_material_override.bounce = 0
@@ -22,9 +27,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if level.activeMap != layer:
+	if level.activeMap != layer and restricted == true:
 		freeze = true
-	else:
+	elif offScreen == false:
 		freeze = false
 		move()
 
@@ -51,7 +56,7 @@ func bounce():
 
 func chounce():
 	if bounceTimer.is_stopped() and target != null:
-		apply_central_impulse((target.global_position - self.global_position) * 10)
+		apply_central_impulse(Vector2(((target.global_position.x - self.global_position.x) * 10), ((target.global_position.y - self.global_position.y) * 20)))
 		bounceTimer.start()
 
 func fly():
@@ -65,3 +70,14 @@ func chly():
 
 func _on_search_body_entered(body: Node2D) -> void:
 	target = body
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	offScreen = false
+	if level.activeMap == layer:
+		freeze = false
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	offScreen = true
+	freeze = true

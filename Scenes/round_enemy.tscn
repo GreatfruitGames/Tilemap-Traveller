@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ccngmq1gy4xm0" path="res://Art/enemy.png" id="1_clbgx"]
 [ext_resource type="Script" uid="uid://cniy1tgyj88bk" path="res://Scripts/enemy_base.gd" id="1_i1b16"]
+[ext_resource type="PackedScene" uid="uid://beqc7nry5khf2" path="res://Scenes/damage_zone.tscn" id="3_cg1qy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uirbe"]
 bounce = 1.0
@@ -11,6 +12,9 @@ radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uirbe"]
 radius = 64.629715
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0f8f"]
+radius = 4.1231055
 
 [node name="round enemy" type="RigidBody2D" unique_id=1984333074 node_paths=PackedStringArray("bounceTimer", "detector")]
 collision_layer = 4
@@ -36,4 +40,14 @@ shape = SubResource("CircleShape2D_uirbe")
 [node name="bounce timer" type="Timer" parent="." unique_id=776975378]
 one_shot = true
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1562433553]
+
+[node name="Damage Zone" parent="." unique_id=1866356009 instance=ExtResource("3_cg1qy")]
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Zone" unique_id=465465696]
+shape = SubResource("CircleShape2D_e0f8f")
+
 [connection signal="body_entered" from="search" to="." method="_on_search_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

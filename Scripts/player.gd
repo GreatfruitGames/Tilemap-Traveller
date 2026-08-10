@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
 
-
+@export var health = 5
+@export var max_health = 5
+@export var health_container : HBoxContainer
 
 # Exports for jump related timers
 @export var coyoteTimer : Timer
 @export var jumpTimer : Timer
+@export var immunityTimer : Timer
 
 # Regular variables for jumping
 var jumping = false
@@ -16,6 +19,10 @@ var coyoteStarted = false
 const SPEED = 50.0
 const JUMP_VELOCITY = -210.0
 
+var respawn_coords = Vector2(0,0)
+var respawn_layer = 0
+
+@export var level : Node2D
 
 # Used to determine the gravity based on whether the player is jumping or just falling
 func getGravity():
@@ -62,3 +69,18 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func damage(value : int):
+	immunityTimer.start()
+	health -= value
+	for i in value:
+		health_container.kill_heart()
+	if health <= 0:
+		die()
+
+func die():
+	pass
+
+func respawn():
+	level.activeMap = respawn_layer
+	self.global_position = respawn_coords
