@@ -1,8 +1,33 @@
 [gd_scene format=3 uid="uid://bjt5ouu1h315k"]
 
 [ext_resource type="Script" uid="uid://dgtmqml4vxcfs" path="res://Scripts/map_level.gd" id="1_ci6au"]
+[ext_resource type="Texture2D" uid="uid://dkvvdag1uurq" path="res://Art/mapground.png" id="1_q0mm3"]
 [ext_resource type="PackedScene" uid="uid://dc8vfn5h04sbn" path="res://Scenes/level1.tscn" id="2_26yhd"]
+[ext_resource type="Texture2D" uid="uid://fc3nm22uksx1" path="res://Art/level-Sheet.png" id="3_myvm1"]
 [ext_resource type="PackedScene" uid="uid://c354i6d43j1bd" path="res://Scenes/level_2.tscn" id="3_p3ir5"]
+[ext_resource type="PackedScene" uid="uid://ci1l8xxwm5vv1" path="res://Scenes/level3.tscn" id="6_np2xp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0mm3"]
+atlas = ExtResource("3_myvm1")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np2xp"]
+atlas = ExtResource("3_myvm1")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tty2r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0mm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np2xp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Map" type="Control" unique_id=1419961583]
 layout_mode = 3
@@ -13,12 +38,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="NinePatchRect" parent="." unique_id=36093528]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_q0mm3")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="Line2D" type="Line2D" parent="." unique_id=47620765]
 position = Vector2(19, 19)
@@ -62,83 +95,119 @@ width = 1.0
 default_color = Color(1, 1, 1, 0.65882355)
 antialiased = true
 
-[node name="Level 1" type="Node2D" parent="." unique_id=200237300]
+[node name="Level 1" type="Node2D" parent="." unique_id=200237300 node_paths=PackedStringArray("sprite")]
 position = Vector2(15, 15)
 script = ExtResource("1_ci6au")
+sprite = NodePath("Sprite2D")
 targetLevel = ExtResource("2_26yhd")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level 1" unique_id=765567889]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Level 1" unique_id=924135496]
+texture_filter = 1
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tty2r")
 
 [node name="Button" type="Button" parent="Level 1" unique_id=1571551187]
 offset_right = 8.0
 offset_bottom = 8.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Level 2" type="Node2D" parent="." unique_id=792354915]
+[node name="Level 2" type="Node2D" parent="." unique_id=792354915 node_paths=PackedStringArray("sprite")]
 position = Vector2(16, 82)
 script = ExtResource("1_ci6au")
+sprite = NodePath("Sprite2D")
 targetLevel = ExtResource("3_p3ir5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level 2" unique_id=2023705371]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Level 2" unique_id=1741894195]
+texture_filter = 1
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tty2r")
 
 [node name="Button" type="Button" parent="Level 2" unique_id=74878187]
 offset_right = 8.0
 offset_bottom = 8.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Level 3" type="Node2D" parent="." unique_id=878582087]
+[node name="Level 3" type="Node2D" parent="." unique_id=878582087 node_paths=PackedStringArray("sprite")]
 position = Vector2(53, 63)
 script = ExtResource("1_ci6au")
+sprite = NodePath("Sprite2D")
+targetLevel = ExtResource("6_np2xp")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level 3" unique_id=265360586]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Level 3" unique_id=1322913521]
+texture_filter = 1
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tty2r")
 
 [node name="Button" type="Button" parent="Level 3" unique_id=1826046259]
 offset_right = 8.0
 offset_bottom = 8.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Level 4" type="Node2D" parent="." unique_id=483489267]
+[node name="Level 4" type="Node2D" parent="." unique_id=483489267 node_paths=PackedStringArray("sprite")]
 position = Vector2(67, 32)
 script = ExtResource("1_ci6au")
+sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level 4" unique_id=1176972419]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Level 4" unique_id=1747474620]
+texture_filter = 1
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tty2r")
 
 [node name="Button" type="Button" parent="Level 4" unique_id=1724825088]
 offset_right = 8.0
 offset_bottom = 8.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Level 5" type="Node2D" parent="." unique_id=153147035]
+[node name="Level 5" type="Node2D" parent="." unique_id=153147035 node_paths=PackedStringArray("sprite")]
 position = Vector2(100, 18)
 script = ExtResource("1_ci6au")
+sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level 5" unique_id=1598391243]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Level 5" unique_id=838950580]
+texture_filter = 1
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tty2r")
 
 [node name="Button" type="Button" parent="Level 5" unique_id=1861680359]
 offset_right = 8.0
 offset_bottom = 8.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Level 6" type="Node2D" parent="." unique_id=2010939604]
+[node name="Level 6" type="Node2D" parent="." unique_id=2010939604 node_paths=PackedStringArray("sprite")]
 position = Vector2(108, 83)
 script = ExtResource("1_ci6au")
+sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level 6" unique_id=2009543697]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Level 6" unique_id=922171747]
+texture_filter = 1
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tty2r")
 
 [node name="Button" type="Button" parent="Level 6" unique_id=399304476]
 offset_right = 8.0
 offset_bottom = 8.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Level 7" type="Node2D" parent="." unique_id=1243506934]
+[node name="Level 7" type="Node2D" parent="." unique_id=1243506934 node_paths=PackedStringArray("sprite")]
 position = Vector2(61, 105)
 script = ExtResource("1_ci6au")
+sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="Level 7" unique_id=2068294309]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Level 7" unique_id=541566952]
+texture_filter = 1
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_tty2r")
 
 [node name="Button" type="Button" parent="Level 7" unique_id=1694935739]
 offset_right = 8.0
 offset_bottom = 8.0
+flat = true
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Level 1/Button" to="Level 1" method="_on_button_pressed"]

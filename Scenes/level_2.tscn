@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://4pm1fvwfn6rm" path="res://Scenes/round_enemy.tscn" id="7_bl0du"]
 [ext_resource type="PackedScene" uid="uid://qutk2cac4cd7" path="res://Scenes/level_end.tscn" id="8_q0ycs"]
 [ext_resource type="PackedScene" uid="uid://begb51drx04uo" path="res://Scenes/coin.tscn" id="9_uhnj4"]
+[ext_resource type="PackedScene" uid="uid://beqc7nry5khf2" path="res://Scenes/damage_zone.tscn" id="11_t7v2y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sur3v"]
 atlas = ExtResource("2_uhnj4")
@@ -42,6 +43,11 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tty2r"]
 size = Vector2(24, 9)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t7v2y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5fcp"]
+size = Vector2(391, 15)
 
 [node name="Level" type="Node2D" unique_id=1300096760 node_paths=PackedStringArray("foregroundMap", "backgroundMap", "midgroundMap", "player", "layers", "camera", "screens")]
 script = ExtResource("1_2mgoq")
@@ -90,8 +96,9 @@ collision_enabled = false
 script = ExtResource("4_t7v2y")
 layer = 2
 
-[node name="Player" parent="." unique_id=201996133 instance=ExtResource("5_ait6c")]
+[node name="Player" parent="." unique_id=201996133 node_paths=PackedStringArray("level") instance=ExtResource("5_ait6c")]
 position = Vector2(76, 49)
+level = NodePath("..")
 
 [node name="Screen Base" parent="." unique_id=1809321133 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
 level = NodePath("..")
@@ -308,3 +315,21 @@ position = Vector2(820, -110)
 
 [node name="Coin13" parent="." unique_id=675978837 instance=ExtResource("9_uhnj4")]
 position = Vector2(868, -79)
+
+[node name="Damage Zone" parent="." unique_id=1866356009 instance=ExtResource("11_t7v2y")]
+position = Vector2(179, 135)
+damage = 1
+respawn = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Zone" unique_id=628070449]
+position = Vector2(0, -11)
+shape = SubResource("WorldBoundaryShape2D_t7v2y")
+
+[node name="Damage Zone2" parent="." unique_id=1575946624 instance=ExtResource("11_t7v2y")]
+position = Vector2(740, 10)
+damage = 1
+respawn = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Zone2" unique_id=1181781789]
+position = Vector2(95.5, -8.5)
+shape = SubResource("RectangleShape2D_e5fcp")

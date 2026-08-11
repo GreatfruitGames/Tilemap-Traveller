@@ -5,6 +5,7 @@ extends Node2D
 @export var map : Control
 
 var currentLevel
+var currentMap
 var new_level
 
 var player
@@ -15,11 +16,12 @@ func Load(level : PackedScene):
 	map.hide()
 	new_level = level.instantiate()
 	add_child(new_level)
-	get_node("/root/Game Manager/Level/Player")
+	player = get_node("/root/Game Manager/Level/Player")
 
 func levelComplete():
 	map.show()
 	new_level.queue_free()
+	currentMap.complete()
 
 func add_coin():
 	player_coins += 1

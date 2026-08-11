@@ -5,6 +5,11 @@
 
 [node name="Game Manager" type="Node2D" unique_id=936264712 node_paths=PackedStringArray("map")]
 script = ExtResource("1_oj352")
-map = NodePath("Map")
+map = NodePath("Container/Map")
 
-[node name="Map" parent="." unique_id=1419961583 instance=ExtResource("2_e5fcp")]
+[node name="Container" type="Container" parent="." unique_id=472745371]
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Map" parent="Container" unique_id=1419961583 instance=ExtResource("2_e5fcp")]
+layout_mode = 2

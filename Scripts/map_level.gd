@@ -9,3 +9,7 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	worldManager.Load(targetLevel)
+	worldManager.currentMap = self
+
+func complete():
+	sprite.frame = 2
