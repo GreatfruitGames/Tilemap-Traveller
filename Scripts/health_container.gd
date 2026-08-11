@@ -26,7 +26,8 @@ func blink():
 	if living[chosen] == true:
 		selected.frame = 5
 		await get_tree().create_timer(randf_range(0,1)).timeout
-		selected.frame = nums[chosen]
+		if living[chosen] == true:
+			selected.frame = nums[chosen]
 	blink()
 
 func kill_heart():
@@ -39,4 +40,12 @@ func kill_heart():
 		index -= 1
 	living[index] = false
 	icons[index].frame = 6
+
+func reset():
+	living.clear()
+	for icon in icons:
+		living.append(true)
+		var number = randi_range(0,4)
+		nums.append(number)
+		icon.frame = number
 	

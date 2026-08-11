@@ -23,10 +23,17 @@ func levelComplete():
 	new_level.queue_free()
 	currentMap.complete()
 
+func levelFailed():
+	map.show()
+	new_level.queue_free()
+
 func add_coin():
 	player_coins += 1
 	if player_coins >= 10:
 		player_lives += 1
 		player_coins -= 10
 	player.coins_tracker.text = " " + str(player_coins)
+	player.lives_tracker.text = " " + str(player_lives)
+
+func updateLives():
 	player.lives_tracker.text = " " + str(player_lives)

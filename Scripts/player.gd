@@ -87,13 +87,22 @@ func _physics_process(delta: float) -> void:
 func damage(value : int):
 	immunityTimer.start()
 	health -= value
+	print(health)
 	for i in value:
 		health_container.kill_heart()
 	if health <= 0:
+		print("Dead")
 		die()
 
 func die():
+	print("Dead2")
 	worldManager.player_lives -= 1
+	worldManager.updateLives()
+	if worldManager.player_lives <= 0:
+		worldManager.levelFailed()
+	else:
+		health = max_health
+		health_container.reset()
 
 func respawn():
 	level.activeMap = respawn_layer
