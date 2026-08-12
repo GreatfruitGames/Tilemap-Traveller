@@ -103,6 +103,7 @@ func die():
 	else:
 		health = max_health
 		health_container.reset()
+		worldManager.reloadLevel()
 
 func respawn():
 	level.activeMap = respawn_layer

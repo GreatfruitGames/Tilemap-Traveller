@@ -14,6 +14,7 @@ var player
 
 func Load(level : PackedScene):
 	map.hide()
+	currentLevel = level
 	new_level = level.instantiate()
 	add_child(new_level)
 	player = get_node("/root/Game Manager/Level/Player")
@@ -37,3 +38,8 @@ func add_coin():
 
 func updateLives():
 	player.lives_tracker.text = " " + str(player_lives)
+
+func reloadLevel():
+	new_level.queue_free()
+	new_level = currentLevel.instantiate()
+	add_child(new_level)
