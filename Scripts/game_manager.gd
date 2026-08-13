@@ -42,4 +42,6 @@ func updateLives():
 func reloadLevel():
 	new_level.queue_free()
 	new_level = currentLevel.instantiate()
+	await get_tree().create_timer(1.0).timeout
 	add_child(new_level)
+	player = get_node("/root/Game Manager/Level/Player")

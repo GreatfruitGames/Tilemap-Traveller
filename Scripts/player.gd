@@ -107,5 +107,5 @@ func die():
 
 func respawn():
 	level.activeMap = respawn_layer
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.25).timeout
 	self.global_position = respawn_coords

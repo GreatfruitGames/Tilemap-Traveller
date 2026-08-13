@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://y1s65iuonxqj" path="res://Art/coin-Sheet.png" id="5_fkybt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7ey7"]
-radius = 4.0
+radius = 3.75
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tty2r"]
 bg_color = Color(0.96731794, 0.64980984, 0.6381937, 0.5019608)

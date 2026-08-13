@@ -10,3 +10,6 @@ func _on_body_entered(body: Node2D) -> void:
 			body.damage(damage)
 			if respawn == true:
 				body.respawn()
+		elif respawn == true:
+			body.damage(damage)
+			body.respawn()
