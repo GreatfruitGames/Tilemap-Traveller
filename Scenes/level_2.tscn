@@ -104,12 +104,14 @@ level = NodePath("..")
 level = NodePath("..")
 rightScreen = 1
 
-[node name="Respawn Point" parent="Screen Base" unique_id=1347352840 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base" unique_id=1347352840 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(20, 104)
+level = NodePath("../..")
 layer = 1
 
-[node name="Respawn Point2" parent="Screen Base" unique_id=937891728 instance=ExtResource("7_42uki")]
+[node name="Respawn Point2" parent="Screen Base" unique_id=937891728 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(112, 32)
+level = NodePath("../..")
 
 [node name="Screen Base2" parent="." unique_id=1818686046 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
 position = Vector2(128, 0)
@@ -123,12 +125,16 @@ enemy_type = "Chouncer"
 level = NodePath("../..")
 layer = 1
 
-[node name="Respawn Point3" parent="Screen Base2" unique_id=769110524 instance=ExtResource("7_42uki")]
+[node name="Respawn Point3" parent="Screen Base2" unique_id=769110524 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(8, 32)
+level = NodePath("../..")
+screenNum = 1
 layer = 1
 
-[node name="Respawn Point4" parent="Screen Base2" unique_id=101861439 instance=ExtResource("7_42uki")]
+[node name="Respawn Point4" parent="Screen Base2" unique_id=101861439 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(120, 72)
+level = NodePath("../..")
+screenNum = 1
 layer = 1
 
 [node name="Screen Base3" parent="." unique_id=1585380963 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
@@ -137,12 +143,16 @@ level = NodePath("..")
 rightScreen = 3
 leftScreen = 1
 
-[node name="Respawn Point" parent="Screen Base3" unique_id=1658919126 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base3" unique_id=1658919126 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(16, 72)
+level = NodePath("../..")
+screenNum = 2
 layer = 1
 
-[node name="Respawn Point2" parent="Screen Base3" unique_id=205604650 instance=ExtResource("7_42uki")]
+[node name="Respawn Point2" parent="Screen Base3" unique_id=205604650 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(116, 112)
+level = NodePath("../..")
+screenNum = 2
 layer = 1
 
 [node name="Screen Base4" parent="." unique_id=2100723936 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
@@ -157,12 +167,16 @@ enemy_type = "Chaser"
 level = NodePath("../..")
 layer = 1
 
-[node name="Respawn Point" parent="Screen Base4" unique_id=1717818551 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base4" unique_id=1717818551 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(12, 112)
+level = NodePath("../..")
+screenNum = 3
 layer = 1
 
-[node name="Respawn Point2" parent="Screen Base4" unique_id=503142611 instance=ExtResource("7_42uki")]
+[node name="Respawn Point2" parent="Screen Base4" unique_id=503142611 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(116, 120)
+level = NodePath("../..")
+screenNum = 3
 layer = 1
 
 [node name="Screen Base5" parent="." unique_id=2125475530 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
@@ -178,12 +192,16 @@ level = NodePath("../..")
 restricted = false
 translucent = true
 
-[node name="Respawn Point" parent="Screen Base5" unique_id=517303903 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base5" unique_id=517303903 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(12, 112)
+level = NodePath("../..")
+screenNum = 4
 layer = 1
 
-[node name="Respawn Point2" parent="Screen Base5" unique_id=985185262 instance=ExtResource("7_42uki")]
+[node name="Respawn Point2" parent="Screen Base5" unique_id=985185262 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(76, 24)
+level = NodePath("../..")
+screenNum = 4
 layer = 2
 
 [node name="Screen Base6" parent="." unique_id=1753227834 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
@@ -193,16 +211,22 @@ rightScreen = 7
 leftScreen = 6
 bottomScreen = 4
 
-[node name="Respawn Point3" parent="Screen Base6" unique_id=1221597903 instance=ExtResource("7_42uki")]
+[node name="Respawn Point3" parent="Screen Base6" unique_id=1221597903 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(64, 120)
+level = NodePath("../..")
+screenNum = 5
 layer = 1
 
-[node name="Respawn Point" parent="Screen Base6" unique_id=2119008570 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base6" unique_id=2119008570 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(12, 120)
+level = NodePath("../..")
+screenNum = 5
 layer = 1
 
-[node name="Respawn Point2" parent="Screen Base6" unique_id=1782261387 instance=ExtResource("7_42uki")]
+[node name="Respawn Point2" parent="Screen Base6" unique_id=1782261387 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(116, 104)
+level = NodePath("../..")
+screenNum = 5
 layer = 1
 
 [node name="Screen Base7" parent="." unique_id=2039113327 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
@@ -217,8 +241,10 @@ level = NodePath("../..")
 restricted = false
 translucent = true
 
-[node name="Respawn Point" parent="Screen Base7" unique_id=306661617 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base7" unique_id=306661617 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(116, 120)
+level = NodePath("../..")
+screenNum = 6
 layer = 1
 
 [node name="Screen Base8" parent="." unique_id=1190201848 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
@@ -227,12 +253,16 @@ level = NodePath("..")
 rightScreen = 8
 leftScreen = 5
 
-[node name="Respawn Point" parent="Screen Base8" unique_id=794779817 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base8" unique_id=794779817 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(12, 96)
+level = NodePath("../..")
+screenNum = 7
 layer = 1
 
-[node name="Respawn Point2" parent="Screen Base8" unique_id=212440222 instance=ExtResource("7_42uki")]
+[node name="Respawn Point2" parent="Screen Base8" unique_id=212440222 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(116, 24)
+level = NodePath("../..")
+screenNum = 7
 layer = 1
 
 [node name="Screen Base9" parent="." unique_id=2077976636 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
@@ -247,12 +277,16 @@ enemy_type = "Bouncer"
 level = NodePath("../..")
 layer = 1
 
-[node name="Respawn Point" parent="Screen Base9" unique_id=801863030 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base9" unique_id=801863030 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(12, 24)
+level = NodePath("../..")
+screenNum = 8
 layer = 1
 
-[node name="Respawn Point2" parent="Screen Base9" unique_id=223951500 instance=ExtResource("7_42uki")]
+[node name="Respawn Point2" parent="Screen Base9" unique_id=223951500 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(116, 88)
+level = NodePath("../..")
+screenNum = 8
 layer = 1
 
 [node name="Screen Base10" parent="." unique_id=1834890171 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]
@@ -273,8 +307,10 @@ enemy_type = "Chouncer"
 level = NodePath("../..")
 layer = 1
 
-[node name="Respawn Point" parent="Screen Base10" unique_id=1086343655 instance=ExtResource("7_42uki")]
+[node name="Respawn Point" parent="Screen Base10" unique_id=1086343655 node_paths=PackedStringArray("level") instance=ExtResource("7_42uki")]
 position = Vector2(12, 88)
+level = NodePath("../..")
+screenNum = 9
 layer = 1
 
 [node name="Coin" parent="." unique_id=626612366 instance=ExtResource("9_uhnj4")]
