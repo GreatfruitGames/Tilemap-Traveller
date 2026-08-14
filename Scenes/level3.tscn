@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ba3w2bw1tqo03" path="res://Scripts/levelController.gd" id="1_mrxql"]
 [ext_resource type="Texture2D" uid="uid://com12ueyt55fb" path="res://Art/layers-Sheet.png" id="2_qrg6c"]
+[ext_resource type="Shader" uid="uid://bbskltyi0pn2d" path="res://Scripts/clouds.gdshader" id="2_vn7r1"]
 [ext_resource type="TileSet" uid="uid://ek6p8r3fd4x2" path="res://Art/new_tile_set.tres" id="3_1x0xh"]
 [ext_resource type="Script" uid="uid://ry02vmocgm3l" path="res://Scripts/mapController.gd" id="4_h3ll2"]
 [ext_resource type="PackedScene" uid="uid://boxj0214f311y" path="res://Scenes/player.tscn" id="5_csbjj"]
@@ -11,6 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://begb51drx04uo" path="res://Scenes/coin.tscn" id="9_vn7r1"]
 [ext_resource type="PackedScene" uid="uid://4pm1fvwfn6rm" path="res://Scenes/round_enemy.tscn" id="10_vwkqt"]
 [ext_resource type="PackedScene" uid="uid://qutk2cac4cd7" path="res://Scenes/level_end.tscn" id="11_h6p24"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwkqt"]
+shader = ExtResource("2_vn7r1")
+shader_parameter/BackColor = Color(0.49755645, 0.80378276, 0.9999997, 1)
+shader_parameter/CloudColor = Color(0.7569, 0.841725, 0.87, 1)
+shader_parameter/speed = 0.574000027265
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sur3v"]
 atlas = ExtResource("2_qrg6c")
@@ -60,6 +67,15 @@ screens = [NodePath("Screen Base0"), NodePath("Screen Base1"), NodePath("Screen 
 texture_filter = 1
 position = Vector2(64, 64)
 
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=2092085568]
+material = SubResource("ShaderMaterial_vwkqt")
+offset_left = 141.04068
+offset_top = -64.0
+offset_right = 269.04068
+offset_bottom = 236.65234
+rotation = 1.5707964
+color = Color(0.34151897, 0.8006342, 0.99365, 1)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=1233841351]
 
 [node name="Layers" type="AnimatedSprite2D" parent="Camera2D/CanvasLayer" unique_id=1526721026]
@@ -94,7 +110,7 @@ script = ExtResource("4_h3ll2")
 layer = 2
 
 [node name="Player" parent="." unique_id=201996133 node_paths=PackedStringArray("level") instance=ExtResource("5_csbjj")]
-position = Vector2(76, 49)
+position = Vector2(68, 108)
 level = NodePath("..")
 
 [node name="Screen Base0" parent="." unique_id=1809321133 node_paths=PackedStringArray("level") instance=ExtResource("6_h6p24")]

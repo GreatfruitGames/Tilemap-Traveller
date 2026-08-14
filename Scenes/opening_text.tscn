@@ -1,98 +1,9 @@
-[gd_scene format=3 uid="uid://etm4j2p3gwqj"]
+[gd_scene format=3 uid="uid://bmagksu5dyut1"]
 
-[ext_resource type="Script" uid="uid://cinet8f7eb7hh" path="res://Scripts/game_manager.gd" id="1_oj352"]
-[ext_resource type="PackedScene" uid="uid://bjt5ouu1h315k" path="res://Scenes/map.tscn" id="2_e5fcp"]
-[ext_resource type="Shader" uid="uid://ca2qi02sfxpjw" path="res://Scripts/transition.gdshader" id="3_mmt5l"]
-[ext_resource type="FontFile" uid="uid://cosm4qnlb0je0" path="res://PixelOperator8.ttf" id="4_fgdfb"]
-
-[sub_resource type="Animation" id="Animation_j63re"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.38]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:material:shader_parameter/progress")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.015]
-}
-
-[sub_resource type="Animation" id="Animation_5b38y"]
-resource_name = "big fade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.17, 1.38]
-}
-
-[sub_resource type="Animation" id="Animation_nbpfx"]
-resource_name = "fade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.37, 3.015]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yqty0"]
-_data = {
-&"RESET": SubResource("Animation_j63re"),
-&"big fade": SubResource("Animation_5b38y"),
-&"fade": SubResource("Animation_nbpfx")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_71d4j"]
-shader = ExtResource("3_mmt5l")
-shader_parameter/use_sprite_alpha = true
-shader_parameter/use_transition_texture = false
-shader_parameter/transition_type = 0
-shader_parameter/position = Vector2(0, 0)
-shader_parameter/invert = true
-shader_parameter/grid_size = Vector2(0, 0)
-shader_parameter/rotation_angle = 0.0
-shader_parameter/stagger = Vector2(0, 0)
-shader_parameter/stagger_frequency = Vector2i(2, 2)
-shader_parameter/flip_frequency = Vector2i(1, 1)
-shader_parameter/basic_feather = 2.0
-shader_parameter/use_mask_size = false
-shader_parameter/mask_size = Vector2(100, 100)
-shader_parameter/edges = 6
-shader_parameter/shape_feather = 0.0
-shader_parameter/sectors = 1
-shader_parameter/clock_feather = 0.0
-shader_parameter/progress = 1.38
-shader_parameter/progress_bias = Vector2(0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efn8y"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="Script" uid="uid://5dmk3xtj73fa" path="res://Scripts/opening_text.gd" id="1_q1duy"]
+[ext_resource type="PackedScene" uid="uid://etm4j2p3gwqj" path="res://Scenes/game_manager.tscn" id="2_5b38y"]
+[ext_resource type="Shader" uid="uid://ca2qi02sfxpjw" path="res://Scripts/transition.gdshader" id="2_s745g"]
+[ext_resource type="FontFile" uid="uid://cosm4qnlb0je0" path="res://PixelOperator8.ttf" id="3_5b38y"]
 
 [sub_resource type="Shader" id="Shader_q1duy"]
 code = "shader_type canvas_item;
@@ -264,7 +175,7 @@ COLOR.a = alpha;
 }
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4mau"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s745g"]
 shader = SubResource("Shader_q1duy")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
@@ -286,49 +197,142 @@ shader_parameter/clock_feather = 0.0
 shader_parameter/progress = 3.015
 shader_parameter/progress_bias = Vector2(0, 0)
 
-[node name="Game Manager" type="Node2D" unique_id=936264712 node_paths=PackedStringArray("map")]
-script = ExtResource("1_oj352")
-map = NodePath("Container/Map")
+[sub_resource type="Animation" id="Animation_j63re"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.38]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.015]
+}
 
-[node name="Container" type="Container" parent="." unique_id=472745371]
-offset_right = 128.0
-offset_bottom = 128.0
+[sub_resource type="Animation" id="Animation_5b38y"]
+resource_name = "big fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.17, 1.38]
+}
 
-[node name="Map" parent="Container" unique_id=1419961583 instance=ExtResource("2_e5fcp")]
-layout_mode = 2
+[sub_resource type="Animation" id="Animation_nbpfx"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.37, 3.015]
+}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1182422332]
-libraries/ = SubResource("AnimationLibrary_yqty0")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j63re"]
+_data = {
+&"RESET": SubResource("Animation_j63re"),
+&"big fade": SubResource("Animation_5b38y"),
+&"fade": SubResource("Animation_nbpfx")
+}
 
-[node name="Panel" type="Panel" parent="." unique_id=666659963]
-z_index = 10
-material = SubResource("ShaderMaterial_71d4j")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0f8f"]
+shader = ExtResource("2_s745g")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(0, 0)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 2.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 1.38
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tty2r"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Opening Text" type="Control" unique_id=281677698]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 128.0
-offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_efn8y")
+script = ExtResource("1_q1duy")
+level = ExtResource("2_5b38y")
 
-[node name="Label" type="Label" parent="." unique_id=1090381246]
-z_index = 11
-material = SubResource("ShaderMaterial_i4mau")
+[node name="TextureRect" type="TextureRect" parent="." unique_id=248207575]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=2146531418]
+material = SubResource("ShaderMaterial_s745g")
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 50.0
-offset_right = 128.0
-offset_bottom = 73.0
+offset_left = -64.0
+offset_top = -11.5
+offset_right = 64.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-offset_transform_enabled = true
-theme_override_fonts/font = ExtResource("4_fgdfb")
+theme_override_fonts/font = ExtResource("3_5b38y")
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1162196076]
+libraries/ = SubResource("AnimationLibrary_j63re")
+
+[node name="Panel" type="Panel" parent="." unique_id=742664947]
+material = SubResource("ShaderMaterial_e0f8f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tty2r")

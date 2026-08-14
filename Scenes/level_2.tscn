@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c354i6d43j1bd"]
 
 [ext_resource type="Script" uid="uid://ba3w2bw1tqo03" path="res://Scripts/levelController.gd" id="1_2mgoq"]
+[ext_resource type="Shader" uid="uid://bbskltyi0pn2d" path="res://Scripts/clouds.gdshader" id="2_ait6c"]
 [ext_resource type="Texture2D" uid="uid://com12ueyt55fb" path="res://Art/layers-Sheet.png" id="2_uhnj4"]
 [ext_resource type="TileSet" uid="uid://ek6p8r3fd4x2" path="res://Art/new_tile_set.tres" id="3_42uki"]
 [ext_resource type="Script" uid="uid://ry02vmocgm3l" path="res://Scripts/mapController.gd" id="4_t7v2y"]
@@ -11,6 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://qutk2cac4cd7" path="res://Scenes/level_end.tscn" id="8_q0ycs"]
 [ext_resource type="PackedScene" uid="uid://begb51drx04uo" path="res://Scenes/coin.tscn" id="9_uhnj4"]
 [ext_resource type="PackedScene" uid="uid://beqc7nry5khf2" path="res://Scenes/damage_zone.tscn" id="11_t7v2y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcilj"]
+shader = ExtResource("2_ait6c")
+shader_parameter/BackColor = Color(0.010828154, 0.0179693, 0.02234505, 1)
+shader_parameter/CloudColor = Color(0.092687316, 0.12713265, 0.14432123, 1)
+shader_parameter/speed = 0.1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sur3v"]
 atlas = ExtResource("2_uhnj4")
@@ -63,6 +70,22 @@ screens = [NodePath("Screen Base"), NodePath("Screen Base2"), NodePath("Screen B
 texture_filter = 1
 position = Vector2(64, 64)
 
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1755462722]
+modulate = Color(0.085983776, 0.08598376, 0.08598376, 1)
+self_modulate = Color(0.103743516, 0.10374353, 0.103743516, 1)
+material = SubResource("ShaderMaterial_vcilj")
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 221.0
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D" unique_id=1920718672]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 63.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 0.76862746)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=1233841351]
 
 [node name="Layers" type="AnimatedSprite2D" parent="Camera2D/CanvasLayer" unique_id=1526721026]
@@ -97,7 +120,7 @@ script = ExtResource("4_t7v2y")
 layer = 2
 
 [node name="Player" parent="." unique_id=201996133 node_paths=PackedStringArray("level") instance=ExtResource("5_ait6c")]
-position = Vector2(76, 49)
+position = Vector2(20, 100)
 level = NodePath("..")
 
 [node name="Screen Base" parent="." unique_id=1809321133 node_paths=PackedStringArray("level") instance=ExtResource("6_vcilj")]

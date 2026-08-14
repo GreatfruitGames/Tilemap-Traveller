@@ -1,0 +1,501 @@
+[gd_scene format=4 uid="uid://dsi65l28t3t2h"]
+
+[ext_resource type="Script" uid="uid://df65lod5hught" path="res://Scripts/title_screen.gd" id="1_0061g"]
+[ext_resource type="TileSet" uid="uid://ek6p8r3fd4x2" path="res://Art/new_tile_set.tres" id="1_p3fck"]
+[ext_resource type="Script" uid="uid://ry02vmocgm3l" path="res://Scripts/mapController.gd" id="2_4gxqj"]
+[ext_resource type="PackedScene" uid="uid://bmagksu5dyut1" path="res://Scenes/opening_text.tscn" id="2_8mikk"]
+[ext_resource type="Shader" uid="uid://bbskltyi0pn2d" path="res://Scripts/clouds.gdshader" id="3_w5sh6"]
+[ext_resource type="Texture2D" uid="uid://nb0whljduthd" path="res://Art/Player.png" id="4_55kwv"]
+[ext_resource type="Script" uid="uid://ba3w2bw1tqo03" path="res://Scripts/levelController.gd" id="5_12m1t"]
+[ext_resource type="Texture2D" uid="uid://com12ueyt55fb" path="res://Art/layers-Sheet.png" id="6_6vd4x"]
+[ext_resource type="Texture2D" uid="uid://ccngmq1gy4xm0" path="res://Art/enemy.png" id="6_12m1t"]
+[ext_resource type="FontFile" uid="uid://cosm4qnlb0je0" path="res://PixelOperator8.ttf" id="7_6vd4x"]
+[ext_resource type="Texture2D" uid="uid://c6pytdyr0htkd" path="res://Art/title.png" id="8_n82rj"]
+[ext_resource type="Shader" uid="uid://ca2qi02sfxpjw" path="res://Scripts/transition.gdshader" id="11_sqelc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7bnd"]
+shader = ExtResource("3_w5sh6")
+shader_parameter/BackColor = Color(0, 0.4, 0.58, 1)
+shader_parameter/CloudColor = Color(0.18, 0.7, 0.87, 1)
+shader_parameter/speed = 0.502000023845
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sur3v"]
+atlas = ExtResource("6_6vd4x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rblm"]
+atlas = ExtResource("6_6vd4x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytws3"]
+atlas = ExtResource("6_6vd4x")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n82rj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sur3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rblm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytws3")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tty2r"]
+bg_color = Color(0.28627452, 0.39215687, 0.5254902, 0.9019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.11372549, 0.11372549, 0.11372549, 0.78431374)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="Animation" id="Animation_j63re"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.38]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.015]
+}
+
+[sub_resource type="Animation" id="Animation_5b38y"]
+resource_name = "big fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.17, 1.38]
+}
+
+[sub_resource type="Animation" id="Animation_nbpfx"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.37, 3.015]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5sh6"]
+_data = {
+&"RESET": SubResource("Animation_j63re"),
+&"big fade": SubResource("Animation_5b38y"),
+&"fade": SubResource("Animation_nbpfx")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o1e67"]
+shader = ExtResource("11_sqelc")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(0, 0)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 2.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 1.38
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycay6"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Shader" id="Shader_o1e67"]
+code = "shader_type canvas_item;
+
+uniform bool use_sprite_alpha = true;
+uniform bool use_transition_texture = false;
+uniform sampler2D transition_texture;
+uniform int transition_type: hint_enum(\"Basic\", \"Mask\", \"Shape\", \"Clock\") = 0;
+
+group_uniforms positioning;
+uniform vec2 position = vec2(0,0);
+uniform bool invert = false;
+uniform vec2 grid_size = vec2(1.0, 1.0);
+uniform float rotation_angle = 0.0;
+
+group_uniforms positioning.stagger;
+uniform vec2 stagger = vec2(0.0, 0.0);
+uniform ivec2 stagger_frequency = ivec2(2, 2);
+uniform ivec2 flip_frequency = ivec2(1, 1);
+
+group_uniforms basic_transition_controls;
+uniform float basic_feather = 0.0;
+
+group_uniforms mask_transition_controls;
+uniform sampler2D mask_texture;
+uniform bool use_mask_size = false;
+uniform vec2 mask_size = vec2(100.0);
+
+group_uniforms shape_transition_controls;
+uniform int edges : hint_range(3, 64) = 6;
+uniform float shape_feather : hint_range(0.0, 16.0) = 0.0;
+
+group_uniforms clock_transition_controls;
+uniform int sectors : hint_range(1, 128) = 1;
+uniform float clock_feather : hint_range(0.0, 16.0) = 0.0;
+
+group_uniforms animation;
+uniform float progress = 0.0;
+uniform vec2 progress_bias = vec2(0.0);
+
+varying vec4 modulate;
+
+vec2 use_actual_texture_size(vec2 uv, vec2 texture_size) {
+
+uv -= 0.5;
+vec2 uv_deriv = fwidth(uv);
+float screen_ratio = uv_deriv.x / uv_deriv.y;
+float texture_ratio = texture_size.x / texture_size.y;
+float mixed_ratio = texture_ratio * screen_ratio;
+
+if (screen_ratio > texture_ratio) {
+uv.x /= mixed_ratio;
+} else {
+uv.y *= mixed_ratio;
+}
+
+return uv + 0.5;
+}
+
+vec2 get_stagger_offset(vec2 grid) {
+vec2 cells = floor(grid);
+float offset_row = mod(cells.y, float(stagger_frequency.x)) == 0.0 ? 0.5 : 0.0;
+float offset_col = mod(cells.x, float(stagger_frequency.y)) == 0.0 ? 0.5 : 0.0;
+
+return vec2(
+offset_row * stagger.x,
+offset_col * stagger.y
+);
+}
+
+vec2 get_grid_flip(vec2 grid) {
+vec2 cells = floor(grid);
+float flip_row = mod(cells.y, float(flip_frequency.x)) == 0.0 ? 1.0 : -1.0;
+float flip_col = mod(cells.x, float(flip_frequency.y)) == 0.0 ? 1.0 : -1.0;
+
+return vec2(
+flip_row * grid.x,
+flip_col * grid.y
+);
+}
+
+vec2 rotate(vec2 v, float angle) {
+return mat2(
+vec2(cos(angle), sin(angle)),
+vec2(-sin(angle), cos(angle))
+) * v;
+}
+
+vec2 get_edges(float center, float width) {
+float half_width = width * 0.5;
+float edge0 = center - half_width;
+float edge1 = center + half_width + 1e-5;
+return vec2(edge0, edge1);
+}
+
+float get_local_progress(vec2 grid) {
+    vec2 cell = floor(grid);
+// Easier to control bias values
+vec2 pretty_bias = progress_bias / 10.0;
+    float offset = dot(cell, pretty_bias);
+    return progress - offset;
+}
+
+void vertex() {
+modulate = COLOR;
+}
+
+void fragment() {
+vec2 grid = UV * grid_size;
+vec2 offset_uv = grid + get_stagger_offset(grid);
+vec2 grid_flipped_uv = get_grid_flip(offset_uv);
+vec2 tiled_uv = fract(grid_flipped_uv);
+vec2 uv = (tiled_uv - position) * 2.0;
+uv = rotate(uv, radians(rotation_angle));
+
+float local_progress = get_local_progress(grid);
+
+COLOR = texture(TEXTURE, UV) * modulate;
+float alpha = COLOR.a;
+float transition_progress = 0.0;
+
+if (transition_type == 1) {
+vec2 mask_zoom_uv = uv / local_progress;
+vec2 mask_zoom_uv_01 = mask_zoom_uv * 0.5 + 0.5;
+mask_zoom_uv_01 = use_mask_size ? use_actual_texture_size(mask_zoom_uv_01, mask_size) : mask_zoom_uv_01;
+
+transition_progress = texture(mask_texture, mask_zoom_uv_01).r;
+
+} else if(transition_type == 2) {
+    float radius = length(uv);
+   float angle = atan(uv.y, uv.x);
+float sector_angle = 2.0 * PI / float(edges);
+float half_sector = sector_angle / 2.0;
+// Define polygon sectors using the power of trigonometry
+float d = cos(half_sector) / cos(mod(angle + half_sector, sector_angle) - half_sector);
+
+vec2 smooth_edges = get_edges(local_progress, shape_feather);
+transition_progress = smoothstep(smooth_edges.x, smooth_edges.y, radius / d);
+
+} else if (transition_type == 3) {
+float radius = length(uv);
+float angle = atan(uv.y, uv.x);
+float sector_angle = 2.0 * PI / float(sectors);
+float half_sector = sector_angle / 2.0;
+angle = mod(angle - half_sector, sector_angle);
+
+float progress_angle = local_progress * 2.0 * PI / float(sectors);
+float smooth_angle = smoothstep(0.0, clock_feather, progress_angle - angle);
+transition_progress = smooth_angle;
+
+} else {
+vec2 smooth_edges = get_edges(local_progress, basic_feather);
+
+float separation_x = smoothstep(smooth_edges.x, smooth_edges.y, abs(uv.x));
+float separation_y = smoothstep(smooth_edges.x, smooth_edges.y, abs(uv.y));
+transition_progress = max(separation_x, separation_y);
+}
+
+alpha = invert ? 1.0 - transition_progress : transition_progress;
+alpha = use_sprite_alpha ? min(COLOR.a, alpha) : alpha;
+
+vec4 transition_color = texture(transition_texture, UV);
+
+if (use_transition_texture) {
+vec4 chosen_color = mix(transition_color, COLOR, alpha);
+COLOR = chosen_color;
+} else {
+COLOR.a = alpha;
+}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqelc"]
+shader = SubResource("Shader_o1e67")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(0, 64)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.0
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 3.015
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[node name="Title Screen" type="Control" unique_id=1980076102]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0061g")
+targetScene = ExtResource("2_8mikk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1207256775]
+material = SubResource("ShaderMaterial_e7bnd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.6313726, 1, 1)
+
+[node name="Background" type="TileMapLayer" parent="." unique_id=1574576982]
+modulate = Color(1, 0.5, 0.5, 0.25)
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAwAAQAFAAIAAAAAAA0AAQAFAAMAAAAAAA4AAQAFAAMAAAAAAA8AAQAFAAQAAAABAA0AAQADAAUAAAACAAwAAQAFAAIAAAACAA0AAQAFAAMAAAACAA4AAQAFAAMAAAACAA8AAQAFAAQAAAAEAAwAAQACAAMAAAAEAA0AAQACAAMAAAAEAA4AAQAFAAMAAAAEAA8AAQAFAAQAAAAFAA8AAQAEAAUAAAAFAA0AAQAEAAQAAAAFAAwAAQAEAAMAAAAHAAwAAQAFAAIAAAAHAA0AAQAFAAMAAAAHAA4AAQAFAAMAAAAHAA8AAQAFAAQAAAAIAA8AAQAEAAUAAAAKAAwAAQAFAAIAAAAKAA0AAQAFAAMAAAAKAA4AAQAFAAMAAAAKAA8AAQAFAAQAAAALAA8AAQAEAAUAAAANAAwAAQACAAMAAAANAA0AAQAFAAMAAAANAA4AAQAFAAMAAAANAA8AAQAFAAQAAAAOAA8AAQADAAUAAAAPAA8AAQAEAAUAAAAPAA4AAQAFAAMAAAAPAA0AAQAFAAMAAAAPAAwAAQAEAAMAAAAOAAwAAQADAAMAAAANAAsAAQACAAMAAAANAAoAAQACAAMAAAANAAkAAQACAAMAAAANAAgAAQACAAMAAAAOAAcAAQADAAMAAAAOAAYAAQADAAMAAAAOAAUAAQADAAIAAAANAAYAAQACAAMAAAANAAUAAQACAAIAAAANAAcAAQACAAMAAAAPAAUAAQADAAIAAAAQAAUAAQADAAIAAAARAAUAAQAEAAIAAAARAAYAAQAEAAMAAAARAAcAAQAEAAMAAAARAAgAAQAEAAMAAAARAAkAAQAEAAMAAAARAAoAAQAGAAMAAAAQAAoAAQADAAMAAAAQAAsAAQADAAQAAAAPAAsAAQAGAAIAAAAOAAsAAQADAAMAAAARAAsAAQAEAAQAAAAPAAoAAQADAAMAAAAOAAoAAQADAAMAAAAOAAkAAQADAAMAAAAOAAgAAQADAAMAAAAPAAgAAQADAAMAAAAPAAkAAQADAAMAAAAPAAcAAQADAAMAAAAPAAYAAQADAAMAAAAQAAYAAQADAAMAAAAQAAcAAQADAAMAAAAQAAgAAQADAAMAAAAQAAkAAQADAAMAAAADAAsAAQACAAQAAAAEAAsAAQADAAMAAAAFAAsAAQAEAAMAAAAFAAoAAQAEAAMAAAAFAAkAAQAEAAMAAAAFAAgAAQAEAAMAAAAFAAcAAQAEAAMAAAAFAAYAAQAEAAMAAAAFAAUAAQAEAAMAAAAFAAQAAQAEAAMAAAAFAAMAAQAEAAMAAAAFAAIAAQAEAAMAAAAFAAEAAQAEAAIAAAAEAAIAAQADAAMAAAADAAIAAQACAAMAAAADAAEAAQACAAIAAAAEAAEAAQADAAIAAAADAAMAAQACAAMAAAADAAQAAQACAAMAAAADAAUAAQACAAMAAAADAAYAAQACAAMAAAADAAcAAQACAAMAAAADAAgAAQACAAMAAAADAAkAAQACAAMAAAADAAoAAQAHAAIAAAAEAAoAAQADAAMAAAAEAAkAAQADAAMAAAAEAAgAAQADAAMAAAAEAAcAAQADAAMAAAAEAAYAAQADAAMAAAAEAAUAAQADAAMAAAAEAAQAAQADAAMAAAAEAAMAAQADAAMAAAA=")
+tile_set = ExtResource("1_p3fck")
+collision_enabled = false
+script = ExtResource("2_4gxqj")
+
+[node name="Midground" type="TileMapLayer" parent="." unique_id=1781395603]
+modulate = Color(0.5, 1, 0.5, 1)
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAA8AAQACAAQAAAAAAA4AAQACAAMAAAAAAA0AAQACAAMAAAABAA0AAQADAAMAAAABAA4AAQADAAMAAAABAA8AAQADAAQAAAACAA8AAQADAAQAAAACAA4AAQADAAMAAAACAA0AAQADAAMAAAADAA0AAQADAAMAAAADAA4AAQADAAMAAAADAA8AAQADAAQAAAAEAA4AAQADAAMAAAAEAA0AAQADAAMAAAAFAA0AAQADAAMAAAAFAA4AAQADAAMAAAAEAA8AAQADAAQAAAAFAA8AAQADAAQAAAAGAA8AAQADAAQAAAAGAA4AAQADAAMAAAAGAA0AAQADAAMAAAAHAA0AAQADAAMAAAAHAA4AAQADAAMAAAAHAA8AAQADAAQAAAAIAA8AAQADAAQAAAAIAA4AAQADAAMAAAAIAA0AAQADAAMAAAAJAA4AAQADAAMAAAAJAA8AAQADAAQAAAAJAA0AAQADAAMAAAAKAA0AAQADAAMAAAAKAA4AAQADAAMAAAAKAA8AAQADAAQAAAALAA4AAQADAAMAAAAMAA4AAQADAAMAAAAMAA0AAQADAAMAAAAMAAwAAQADAAIAAAALAA8AAQADAAQAAAALAA0AAQADAAMAAAANAA0AAQADAAMAAAANAA4AAQADAAMAAAANAA8AAQADAAQAAAAMAA8AAQADAAQAAAAOAA4AAQADAAMAAAAPAA4AAQAEAAMAAAAPAA0AAQAEAAMAAAAOAA0AAQADAAMAAAAOAAwAAQADAAIAAAAOAA8AAQADAAQAAAAPAA8AAQAEAAQAAAAPAAwAAQAEAAIAAAANAAwAAQADAAIAAAALAAwAAQADAAIAAAAKAAwAAQAGAAMAAAAJAAwAAQADAAMAAAAIAAwAAQADAAMAAAAHAAwAAQAHAAMAAAAGAAwAAQADAAIAAAAFAAwAAQADAAIAAAAEAAwAAQADAAIAAAADAAwAAQADAAIAAAACAAwAAQADAAIAAAABAAwAAQAGAAMAAAAAAAwAAQACAAMAAAABAAsAAQAEAAMAAAABAAoAAQAEAAMAAAABAAkAAQAEAAMAAAABAAgAAQAEAAMAAAABAAcAAQAEAAIAAAAAAAcAAQADAAIAAAAAAAgAAQADAAMAAAAAAAkAAQADAAMAAAAAAAoAAQADAAMAAAAAAAsAAQAHAAIAAAD//wsAAQACAAQAAAD//woAAQACAAMAAAD//wkAAQACAAMAAAD//wgAAQACAAMAAAD//wcAAQACAAIAAAAHAAsAAQACAAMAAAAHAAoAAQACAAMAAAAHAAkAAQACAAIAAAAIAAkAAQADAAIAAAAJAAkAAQADAAIAAAAKAAkAAQAEAAIAAAAJAAoAAQADAAMAAAAJAAsAAQADAAMAAAAIAAoAAQADAAMAAAAIAAsAAQADAAMAAAAKAAoAAQAEAAMAAAAKAAsAAQAEAAMAAAA=")
+tile_set = ExtResource("1_p3fck")
+script = ExtResource("2_4gxqj")
+layer = 1
+
+[node name="Foreground" type="TileMapLayer" parent="." unique_id=2116235235]
+modulate = Color(0.5, 0.5, 1, 0.25)
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAsAAQACAAQAAAABAAoAAQACAAMAAAABAAkAAQACAAMAAAABAAgAAQACAAMAAAABAAcAAQACAAMAAAABAAYAAQACAAMAAAABAAUAAQACAAMAAAABAAQAAQACAAMAAAABAAMAAQACAAIAAAACAAMAAQADAAIAAAADAAMAAQAEAAIAAAADAAQAAQAEAAMAAAADAAUAAQAEAAMAAAADAAYAAQAEAAMAAAADAAcAAQAEAAMAAAADAAgAAQAEAAMAAAADAAkAAQAEAAMAAAADAAoAAQAEAAMAAAADAAsAAQAEAAQAAAACAAsAAQADAAQAAAACAAoAAQADAAMAAAACAAkAAQADAAMAAAACAAgAAQADAAMAAAACAAcAAQADAAMAAAACAAYAAQADAAMAAAACAAQAAQADAAMAAAACAAUAAQADAAMAAAAKAAsAAQACAAQAAAAKAAoAAQACAAMAAAAKAAkAAQACAAMAAAAKAAgAAQACAAMAAAAKAAcAAQACAAMAAAAKAAYAAQACAAMAAAAKAAUAAQACAAMAAAAKAAQAAQACAAIAAAALAAQAAQADAAIAAAAMAAQAAQADAAIAAAAMAAUAAQADAAMAAAAMAAYAAQADAAMAAAAMAAcAAQADAAMAAAAMAAgAAQADAAMAAAAMAAkAAQADAAMAAAAMAAoAAQADAAMAAAAMAAsAAQADAAQAAAALAAsAAQADAAQAAAALAAoAAQADAAMAAAALAAkAAQADAAMAAAALAAgAAQADAAMAAAALAAcAAQADAAMAAAALAAYAAQADAAMAAAALAAUAAQADAAMAAAANAAQAAQAEAAIAAAANAAUAAQAEAAMAAAANAAYAAQAEAAMAAAANAAcAAQAEAAMAAAANAAgAAQAEAAMAAAANAAkAAQAEAAMAAAANAAsAAQAEAAQAAAANAAoAAQAEAAMAAAA=")
+tile_set = ExtResource("1_p3fck")
+collision_enabled = false
+script = ExtResource("2_4gxqj")
+layer = 2
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1028787022 node_paths=PackedStringArray("foregroundMap", "backgroundMap", "midgroundMap", "player", "layers", "camera")]
+script = ExtResource("5_12m1t")
+foregroundMap = NodePath("../Foreground")
+backgroundMap = NodePath("../Background")
+midgroundMap = NodePath("../Midground")
+player = NodePath("")
+layers = NodePath("../Camera2D/Layers")
+camera = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=482369599]
+texture_filter = 1
+position = Vector2(64, 64)
+
+[node name="Layers" type="AnimatedSprite2D" parent="Camera2D" unique_id=1481397588]
+texture_filter = 1
+position = Vector2(141, -56)
+sprite_frames = SubResource("SpriteFrames_n82rj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1401763247]
+texture_filter = 1
+position = Vector2(44, 92)
+texture = ExtResource("4_55kwv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=914815723]
+texture_filter = 1
+position = Vector2(120, 36)
+texture = ExtResource("6_12m1t")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=955789268]
+texture_filter = 1
+position = Vector2(16, 20)
+texture = ExtResource("6_12m1t")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=519968525]
+texture_filter = 1
+position = Vector2(108, 92)
+texture = ExtResource("6_12m1t")
+
+[node name="Container" type="PanelContainer" parent="." unique_id=1399916923]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.344
+anchor_top = 0.344
+anchor_right = 0.66400003
+anchor_bottom = 0.656
+offset_left = -0.032001495
+offset_top = 16.967999
+offset_right = 0.0079956055
+offset_bottom = 6.0319977
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tty2r")
+
+[node name="Button2" type="Button" parent="Container" unique_id=283960809]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("7_6vd4x")
+theme_override_font_sizes/font_size = 8
+text = "Quit"
+flat = true
+
+[node name="Button" type="Button" parent="Container" unique_id=1394988761]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("7_6vd4x")
+theme_override_font_sizes/font_size = 8
+text = "Start"
+flat = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=805947005]
+texture_filter = 1
+position = Vector2(64, 32)
+texture = ExtResource("8_n82rj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=483755095]
+libraries/ = SubResource("AnimationLibrary_w5sh6")
+
+[node name="Panel" type="Panel" parent="." unique_id=125937107]
+material = SubResource("ShaderMaterial_o1e67")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ycay6")
+
+[node name="Label" type="Label" parent="." unique_id=1363981010]
+visible = false
+material = SubResource("ShaderMaterial_sqelc")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -11.5
+offset_right = 64.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_6vd4x")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Container/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Container/Button" to="." method="_on_button_pressed"]
