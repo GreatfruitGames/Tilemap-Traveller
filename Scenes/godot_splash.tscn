@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bmuvfqp4i3ynm"]
+
+[ext_resource type="Texture2D" uid="uid://o036roghub7n" path="res://Art/Godot.png" id="1_3qcjg"]
+[ext_resource type="Script" uid="uid://cmt4cajofivjc" path="res://Scripts/splash_manager.gd" id="1_xpa3y"]
+[ext_resource type="FontFile" uid="uid://cosm4qnlb0je0" path="res://PixelOperator8.ttf" id="2_brhso"]
+
+[node name="Godot Splash" type="Control" unique_id=788137184]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xpa3y")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=250867962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=46145890]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_3qcjg")
+
+[node name="Label" type="Label" parent="." unique_id=498290049]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_top = 17.0
+offset_right = 41.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_brhso")
+theme_override_font_sizes/font_size = 8
+text = "Made with"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=62686634]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -43.0
+offset_right = 52.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_brhso")
+theme_override_font_sizes/font_size = 8
+text = "Godot Engine"
+horizontal_alignment = 1
+vertical_alignment = 1
