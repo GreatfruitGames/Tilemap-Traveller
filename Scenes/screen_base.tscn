@@ -48,7 +48,7 @@ vertical_alignment = 1
 [node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1768552358]
 offset_right = 128.0
 offset_bottom = 128.0
-border_color = Color(0.47275236, 0.73934126, 0.047578678, 1)
+border_color = Color(0.06828711, 0.5711637, 0.7863849, 1)
 
 [node name="cameraSpot" type="Marker2D" parent="." unique_id=923864960]
 position = Vector2(64, 64)
@@ -63,7 +63,7 @@ position = Vector2(120, 64)
 position = Vector2(64, 8)
 
 [node name="bottomSpawnSpot" type="Marker2D" parent="." unique_id=1650447305]
-position = Vector2(64, 120)
+position = Vector2(64, 116)
 
 [node name="left" type="Area2D" parent="." unique_id=174304863]
 position = Vector2(0, 64)

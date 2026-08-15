@@ -4,6 +4,7 @@ extends Node2D
 @export var targetLevel : PackedScene
 @export var title : String
 var worldManager
+@export var audioName : String
 
 func _ready() -> void:
 	worldManager = get_node("/root/Game Manager")
@@ -11,6 +12,7 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	worldManager.Load(targetLevel, title)
 	worldManager.currentMap = self
+	GlobalAudio.current_zone = audioName
 
 func complete():
 	sprite.frame = 2

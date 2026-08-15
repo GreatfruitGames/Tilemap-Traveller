@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4np0fwjyxqux"
+path="res://.godot/imported/Tilemap Traveler Level 2 Main Loop.mp3-8002617a94333660777244aa02e033d2.mp3str"
+
+[deps]
+
+source_file="res://Art/Music/Tilemap Traveler Level 2 Main Loop.mp3"
+dest_files=["res://.godot/imported/Tilemap Traveler Level 2 Main Loop.mp3-8002617a94333660777244aa02e033d2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

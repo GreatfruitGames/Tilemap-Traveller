@@ -89,6 +89,7 @@ script = ExtResource("1_ci6au")
 sprite = NodePath("Sprite2D")
 targetLevel = ExtResource("2_26yhd")
 title = "Level 1: Basic Plains"
+audioName = "Level1"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Level 1" unique_id=924135496]
 texture_filter = 1
@@ -107,6 +108,7 @@ script = ExtResource("1_ci6au")
 sprite = NodePath("Sprite2D")
 targetLevel = ExtResource("3_p3ir5")
 title = "Level 2: Obligatory Caves"
+audioName = "Level2"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Level 2" unique_id=1741894195]
 texture_filter = 1
@@ -125,6 +127,7 @@ script = ExtResource("1_ci6au")
 sprite = NodePath("Sprite2D")
 targetLevel = ExtResource("6_np2xp")
 title = "Level 3: Typical Mountain"
+audioName = "Level3"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Level 3" unique_id=1322913521]
 texture_filter = 1
@@ -143,6 +146,7 @@ script = ExtResource("1_ci6au")
 sprite = NodePath("Sprite2D")
 targetLevel = ExtResource("7_w7jjh")
 title = "Level 4: Necessary Forest"
+audioName = "Level4"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Level 4" unique_id=1747474620]
 texture_filter = 1
@@ -161,6 +165,7 @@ script = ExtResource("1_ci6au")
 sprite = NodePath("Sprite2D")
 targetLevel = ExtResource("8_6q3n4")
 title = "Level 5: B̸̫̠͚͎̞̤̖̈́̔͛̈́́̿̀o̶̢̖̦͓̱̼̩͇̔̐̌̎̀̊s̵̡̺̦͇̺̗̼̙̯̬̤̼̥͌ș̵͈̜̠̺͖̼̰̮̘̈́͛̈́̉̓́̋̓̀̕͘͜ ̴̢̡̮̹͚̘̮̺̙̟̦͔̺̓̽̏͂̃̀̄́̂͜͝F̷͇͈̤̻͙̠̓̆͆̇̏̍̓̐͑̽̔̈̌͘͝i̴̟̫͔̖̱̦͈̣̣̻͊͒͋̄̾̍̉̒̄̒͊̀͘͝g̵̡̢̙̤̗̲͇̝͔̭̙̖͉̠̊̾͂̾͋̒̌̂̓͒̍̋̌̈́h̵̨̞̦̳͍̜̩̫̍̈́͜͜t̴̨̢̢̗̜̦̗̮̺̘̰̾̉̎̀́̈́̏͗̅̋͝"
+audioName = "Level5"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="Level 5" unique_id=838950580]
 texture_filter = 1

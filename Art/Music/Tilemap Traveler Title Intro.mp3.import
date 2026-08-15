@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3w2hxec0xbiq"
+path="res://.godot/imported/Tilemap Traveler Title Intro.mp3-5504bd43955981cbad297455460d9248.mp3str"
+
+[deps]
+
+source_file="res://Art/Music/Tilemap Traveler Title Intro.mp3"
+dest_files=["res://.godot/imported/Tilemap Traveler Title Intro.mp3-5504bd43955981cbad297455460d9248.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

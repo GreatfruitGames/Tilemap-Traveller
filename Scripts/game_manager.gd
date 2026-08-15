@@ -39,6 +39,7 @@ func levelComplete():
 	new_level.queue_free()
 	currentMap.complete()
 	animation_player.play_backwards("big fade")
+	GlobalAudio.current_zone = "Title"
 
 func levelFailed():
 	animation_player.play("big fade")
@@ -46,6 +47,7 @@ func levelFailed():
 	map.show()
 	new_level.queue_free()
 	animation_player.play_backwards("big fade")
+	GlobalAudio.current_zone = "Title"
 
 func add_coin():
 	player_coins += 1

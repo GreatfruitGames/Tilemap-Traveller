@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cinet8f7eb7hh" path="res://Scripts/game_manager.gd" id="1_oj352"]
 [ext_resource type="PackedScene" uid="uid://bjt5ouu1h315k" path="res://Scenes/map.tscn" id="2_e5fcp"]
+[ext_resource type="PackedScene" uid="uid://ckcl0nsli3vbw" path="res://Scenes/music_manager.tscn" id="2_fgdfb"]
 [ext_resource type="Shader" uid="uid://ca2qi02sfxpjw" path="res://Scripts/transition.gdshader" id="3_mmt5l"]
 [ext_resource type="FontFile" uid="uid://cosm4qnlb0je0" path="res://PixelOperator8.ttf" id="4_fgdfb"]
 
@@ -289,6 +290,8 @@ shader_parameter/progress_bias = Vector2(0, 0)
 [node name="Game Manager" type="Node2D" unique_id=936264712 node_paths=PackedStringArray("map")]
 script = ExtResource("1_oj352")
 map = NodePath("Container/Map")
+
+[node name="WorldAudioManager" parent="." unique_id=1671906572 instance=ExtResource("2_fgdfb")]
 
 [node name="Container" type="Container" parent="." unique_id=472745371]
 offset_right = 128.0
