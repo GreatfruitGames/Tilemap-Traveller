@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bpxykw4cuugfq"]
+
+[ext_resource type="Script" uid="uid://de4tu1k8e35my" path="res://Scripts/boulder.gd" id="1_4dqbg"]
+[ext_resource type="Texture2D" uid="uid://b0uw78pl23tx" path="res://Art/boulder.png" id="1_gra7m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4dqbg"]
+rough = true
+bounce = 0.17
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tty2r"]
+radius = 7.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dqbg"]
+radius = 8.0
+
+[node name="Boulder" type="RigidBody2D" unique_id=795902777]
+collision_layer = 24
+collision_mask = 10
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_4dqbg")
+script = ExtResource("1_4dqbg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2077373767]
+shape = SubResource("CircleShape2D_tty2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1982938142]
+texture_filter = 1
+texture = ExtResource("1_gra7m")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2143787013]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=515047435]
+shape = SubResource("CircleShape2D_4dqbg")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1535220610]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

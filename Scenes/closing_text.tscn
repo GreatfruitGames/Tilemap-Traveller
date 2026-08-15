@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://bmagksu5dyut1"]
+[gd_scene format=3 uid="uid://bj3v0o7xv010w"]
 
-[ext_resource type="Script" uid="uid://5dmk3xtj73fa" path="res://Scripts/opening_text.gd" id="1_q1duy"]
-[ext_resource type="PackedScene" uid="uid://etm4j2p3gwqj" path="res://Scenes/game_manager.tscn" id="2_5b38y"]
-[ext_resource type="Shader" uid="uid://ca2qi02sfxpjw" path="res://Scripts/transition.gdshader" id="2_s745g"]
-[ext_resource type="FontFile" uid="uid://cosm4qnlb0je0" path="res://PixelOperator8.ttf" id="3_5b38y"]
+[ext_resource type="Script" uid="uid://cxe18yalsad83" path="res://Scripts/closing_text.gd" id="1_u4yrv"]
+[ext_resource type="PackedScene" uid="uid://ds38j0nk54yj1" path="res://Scenes/godot_credits.tscn" id="2_kkq74"]
+[ext_resource type="FontFile" uid="uid://cosm4qnlb0je0" path="res://PixelOperator8.ttf" id="3_34td4"]
+[ext_resource type="Shader" uid="uid://ca2qi02sfxpjw" path="res://Scripts/transition.gdshader" id="4_glbfv"]
 
 [sub_resource type="Shader" id="Shader_5b38y"]
 code = "shader_type canvas_item;
@@ -262,7 +262,7 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0f8f"]
-shader = ExtResource("2_s745g")
+shader = ExtResource("4_glbfv")
 shader_parameter/use_sprite_alpha = true
 shader_parameter/use_transition_texture = false
 shader_parameter/transition_type = 0
@@ -293,8 +293,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_q1duy")
-level = ExtResource("2_5b38y")
+script = ExtResource("1_u4yrv")
+level = ExtResource("2_kkq74")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=248207575]
 layout_mode = 1
@@ -318,7 +318,7 @@ offset_right = 64.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_5b38y")
+theme_override_fonts/font = ExtResource("3_34td4")
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1

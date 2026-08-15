@@ -1,12 +1,14 @@
-extends RigidBody2D
+class_name enemy extends RigidBody2D
 
-@export_enum("Chaser", "Bouncer", "Chouncer", "Flyer", "Chlyer") var enemy_type : String
+@export_enum("Chaser", "Bouncer", "Chouncer", "Flyer", "Chlyer", "Boss") var enemy_type : String
 @export var bounceTimer : Timer
 @export var level : Node2D
 @export var detector : Area2D
 @export var restricted = true
 @export var translucent = false
 
+
+var bossHealth = 3
 var offScreen = true
 var target
 
@@ -44,6 +46,8 @@ func move():
 		fly()
 	elif enemy_type == "Chlyer":
 		chly()
+	elif enemy_type == "Boss":
+		boss()
 
 func chase():
 	if target != null:
@@ -81,3 +85,11 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	offScreen = true
 	freeze = true
+
+func die():
+	queue_free()
+
+func boss():
+	if bounceTimer.is_stopped() and target != null:
+		apply_central_impulse(Vector2(((target.global_position.x - self.global_position.x) * 10), ((target.global_position.y - self.global_position.y) * 20)))
+		bounceTimer.start()

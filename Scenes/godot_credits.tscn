@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ds38j0nk54yj1"]
+
+[ext_resource type="Script" uid="uid://crtsdmse2ry72" path="res://Scripts/godot_credits.gd" id="1_mercs"]
+[ext_resource type="FontFile" uid="uid://cosm4qnlb0je0" path="res://PixelOperator8.ttf" id="2_pdby4"]
+
+[node name="GodotCredits" type="Node2D" unique_id=1795825834]
+script = ExtResource("1_mercs")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1974821246]
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(0, 0, 0, 1)
+
+[node name="CreditsContainer" type="Control" parent="." unique_id=2126137820]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="Line" type="Label" parent="CreditsContainer" unique_id=1883260623]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 128.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("2_pdby4")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+autowrap_mode = 2
