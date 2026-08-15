@@ -30,7 +30,6 @@ GlobalAudio="*uid://dnwf1pjxhydex"
 window/size/viewport_width=128
 window/size/viewport_height=128
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [input]
 
