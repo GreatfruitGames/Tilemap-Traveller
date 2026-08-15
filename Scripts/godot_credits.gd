@@ -1,7 +1,7 @@
 extends Node2D
 
 const section_time := 2.0
-const line_time := 0.3
+const line_time := 1.0
 const base_speed := 50
 const speed_up_multiplier := 10.0
 const title_color := Color.BLUE
@@ -62,7 +62,7 @@ var credits = [
 ]
 
 
-func _process(delta: float) -> void:
+func _process(delta):
 	var scroll_speed = base_speed * delta
 
 	if section_next:
@@ -94,26 +94,29 @@ func _process(delta: float) -> void:
 	elif started:
 		finish()
 
+
 func finish():
 	if not finished:
 		finished = true
 		await get_tree().create_timer(1).timeout
-		
-		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
+
 
 func add_line():
 	var new_line = line.duplicate()
 	new_line.text = section.pop_front()
 	lines.append(new_line)
 	$CreditsContainer.add_child(new_line)
+	#if curr_line == 0:
+	#new_line.label_settings.font_color = title_color
 	if section.size() > 0:
 		curr_line += 1
 		section_next = false
 	else:
-		section_next = false
+		section_next = true
 
-func _unhandled_input(event: InputEvent) -> void:
+
+func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		finish()
 	if event.is_action_pressed("ui_down") and !event.is_echo():
