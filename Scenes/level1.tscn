@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b86xdpo2lb8c5" path="res://Scenes/respawn_point.tscn" id="8_4iphx"]
 [ext_resource type="PackedScene" uid="uid://beqc7nry5khf2" path="res://Scenes/damage_zone.tscn" id="9_jgkgd"]
 [ext_resource type="PackedScene" uid="uid://qutk2cac4cd7" path="res://Scenes/level_end.tscn" id="10_bs12r"]
+[ext_resource type="AudioStream" uid="uid://dfjuut00c34jh" path="res://Art/SFX/blipSelect.wav" id="12_cpkqv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bs12r"]
 shader = ExtResource("2_rqhku")
@@ -52,7 +53,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uirbe"]
 size = Vector2(19, 33)
 
-[node name="Level" type="Node2D" unique_id=1300096760 node_paths=PackedStringArray("foregroundMap", "backgroundMap", "midgroundMap", "player", "layers", "camera", "screens")]
+[node name="Level" type="Node2D" unique_id=1300096760 node_paths=PackedStringArray("foregroundMap", "backgroundMap", "midgroundMap", "player", "layers", "camera", "change_sound", "screens")]
 script = ExtResource("1_didp7")
 foregroundMap = NodePath("Foreground")
 backgroundMap = NodePath("Background")
@@ -60,6 +61,7 @@ midgroundMap = NodePath("Midground")
 player = NodePath("Player")
 layers = NodePath("Camera2D/CanvasLayer/Layers")
 camera = NodePath("Camera2D")
+change_sound = NodePath("AudioStreamPlayer2D")
 screens = [NodePath("Screen Base"), NodePath("Screen Base2"), NodePath("Screen Base3"), NodePath("Screen Base4"), NodePath("Screen Base5"), NodePath("Screen Base6"), NodePath("Screen Base7"), NodePath("Screen Base8"), NodePath("Screen Base9"), NodePath("Screen Base10")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=631988478]
@@ -365,3 +367,6 @@ position = Vector2(1164, 104)
 level = NodePath("..")
 screenNum = 9
 layer = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1956798155]
+stream = ExtResource("12_cpkqv")

@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://qutk2cac4cd7" path="res://Scenes/level_end.tscn" id="8_q0ycs"]
 [ext_resource type="PackedScene" uid="uid://begb51drx04uo" path="res://Scenes/coin.tscn" id="9_uhnj4"]
 [ext_resource type="PackedScene" uid="uid://beqc7nry5khf2" path="res://Scenes/damage_zone.tscn" id="11_t7v2y"]
+[ext_resource type="AudioStream" uid="uid://dfjuut00c34jh" path="res://Art/SFX/blipSelect.wav" id="13_vcilj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vcilj"]
 shader = ExtResource("2_ait6c")
@@ -56,7 +57,7 @@ size = Vector2(24, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5fcp"]
 size = Vector2(391, 15)
 
-[node name="Level" type="Node2D" unique_id=1300096760 node_paths=PackedStringArray("foregroundMap", "backgroundMap", "midgroundMap", "player", "layers", "camera", "screens")]
+[node name="Level" type="Node2D" unique_id=1300096760 node_paths=PackedStringArray("foregroundMap", "backgroundMap", "midgroundMap", "player", "layers", "camera", "change_sound", "screens")]
 script = ExtResource("1_2mgoq")
 foregroundMap = NodePath("Foreground")
 backgroundMap = NodePath("Background")
@@ -64,6 +65,7 @@ midgroundMap = NodePath("Midground")
 player = NodePath("Player")
 layers = NodePath("Camera2D/CanvasLayer/Layers")
 camera = NodePath("Camera2D")
+change_sound = NodePath("AudioStreamPlayer2D")
 screens = [NodePath("Screen Base"), NodePath("Screen Base2"), NodePath("Screen Base3"), NodePath("Screen Base4"), NodePath("Screen Base5"), NodePath("Screen Base6"), NodePath("Screen Base7"), NodePath("Screen Base8"), NodePath("Screen Base9"), NodePath("Screen Base10")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=631988478]
@@ -392,3 +394,6 @@ respawn = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Zone2" unique_id=1181781789]
 position = Vector2(95.5, -8.5)
 shape = SubResource("RectangleShape2D_e5fcp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2035245679]
+stream = ExtResource("13_vcilj")

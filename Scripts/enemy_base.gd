@@ -6,6 +6,7 @@ class_name enemy extends RigidBody2D
 @export var detector : Area2D
 @export var restricted = true
 @export var translucent = false
+@export var death_sound : AudioStreamPlayer2D
 
 
 var bossHealth = 3
@@ -87,6 +88,9 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	freeze = true
 
 func die():
+	death_sound.play()
+	hide()
+	await death_sound.finished
 	queue_free()
 
 func boss():

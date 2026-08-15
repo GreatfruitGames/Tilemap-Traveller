@@ -13,7 +13,12 @@ config_version=5
 config/name="Girly Game Jam"
 run/main_scene="uid://bujha374y463u"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+config/icon="uid://nb0whljduthd"
+
+[audio]
+
+buses/default_bus_layout="uid://02g0nvrps4c3"
 
 [autoload]
 

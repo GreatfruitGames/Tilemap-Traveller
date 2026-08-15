@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ccngmq1gy4xm0" path="res://Art/enemy.png" id="1_clbgx"]
 [ext_resource type="Script" uid="uid://cniy1tgyj88bk" path="res://Scripts/enemy_base.gd" id="1_i1b16"]
 [ext_resource type="PackedScene" uid="uid://beqc7nry5khf2" path="res://Scenes/damage_zone.tscn" id="3_cg1qy"]
+[ext_resource type="AudioStream" uid="uid://1cuvwnm71u3e" path="res://Art/SFX/hitHurt (1).wav" id="4_gjc83"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uirbe"]
 bounce = 1.0
@@ -16,7 +17,7 @@ radius = 64.629715
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0f8f"]
 radius = 4.1231055
 
-[node name="round enemy" type="RigidBody2D" unique_id=1984333074 node_paths=PackedStringArray("bounceTimer", "detector")]
+[node name="round enemy" type="RigidBody2D" unique_id=1984333074 node_paths=PackedStringArray("bounceTimer", "detector", "death_sound")]
 collision_layer = 4
 collision_mask = 10
 mass = 5.0
@@ -24,6 +25,7 @@ physics_material_override = SubResource("PhysicsMaterial_uirbe")
 script = ExtResource("1_i1b16")
 bounceTimer = NodePath("bounce timer")
 detector = NodePath("search")
+death_sound = NodePath("AudioStreamPlayer2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1650485503]
 shape = SubResource("CircleShape2D_tty2r")
@@ -47,6 +49,9 @@ damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Zone" unique_id=465465696]
 shape = SubResource("CircleShape2D_e0f8f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2051303144]
+stream = ExtResource("4_gjc83")
 
 [connection signal="body_entered" from="search" to="." method="_on_search_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

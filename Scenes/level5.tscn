@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b86xdpo2lb8c5" path="res://Scenes/respawn_point.tscn" id="10_h7oot"]
 [ext_resource type="Script" uid="uid://cniy1tgyj88bk" path="res://Scripts/enemy_base.gd" id="11_mnpdm"]
 [ext_resource type="Texture2D" uid="uid://ccngmq1gy4xm0" path="res://Art/enemy.png" id="12_o74cx"]
+[ext_resource type="AudioStream" uid="uid://dfjuut00c34jh" path="res://Art/SFX/blipSelect.wav" id="15_csg1d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jbms"]
 shader = ExtResource("2_dpg5n")
@@ -64,7 +65,7 @@ radius = 64.629715
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0f8f"]
 radius = 4.1231055
 
-[node name="Level" type="Node2D" unique_id=1300096760 node_paths=PackedStringArray("foregroundMap", "backgroundMap", "midgroundMap", "player", "layers", "camera", "screens")]
+[node name="Level" type="Node2D" unique_id=1300096760 node_paths=PackedStringArray("foregroundMap", "backgroundMap", "midgroundMap", "player", "layers", "camera", "change_sound", "screens")]
 script = ExtResource("1_uey7i")
 foregroundMap = NodePath("Foreground")
 backgroundMap = NodePath("Background")
@@ -72,6 +73,7 @@ midgroundMap = NodePath("Midground")
 player = NodePath("Player")
 layers = NodePath("Camera2D/CanvasLayer/Layers")
 camera = NodePath("Camera2D")
+change_sound = NodePath("AudioStreamPlayer2D")
 screens = [NodePath("Screen Base"), NodePath("Screen Base2"), NodePath("Screen Base3"), NodePath("Screen Base4"), NodePath("Screen Base5"), NodePath("Screen Base6")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=631988478]
@@ -346,6 +348,9 @@ damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="round enemy8/Damage Zone" unique_id=465465696]
 shape = SubResource("CircleShape2D_e0f8f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1026669328]
+stream = ExtResource("15_csg1d")
 
 [connection signal="body_entered" from="round enemy8/search" to="round enemy8" method="_on_search_body_entered"]
 [connection signal="screen_entered" from="round enemy8/VisibleOnScreenNotifier2D" to="round enemy8" method="_on_visible_on_screen_notifier_2d_screen_entered"]

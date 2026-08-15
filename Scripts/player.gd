@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
 
+@export var coin_sound : AudioStreamPlayer2D
+@export var hurt_sound : AudioStreamPlayer2D
+@export var jump_sound : AudioStreamPlayer2D
+
 @export var lives_tracker : RichTextLabel
 @export var coins_tracker : RichTextLabel
 
@@ -64,6 +68,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyoteTimer.is_stopped() == false):
 		jumping = true
 		velocity.y = JUMP_VELOCITY
+		jump_sound.play()
+		jump_sound.pitch_scale = randf_range(0.8,1.2)
 	# Allows the player to press the jump button slightly before hitting the ground
 	elif Input.is_action_just_pressed("jump") and not is_on_floor() and coyoteTimer.is_stopped():
 		jumpTimer.start()
@@ -71,6 +77,8 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor() and Input.is_action_pressed("jump"):
 			jumping = true
 			velocity.y = JUMP_VELOCITY
+			jump_sound.play()
+			jump_sound.pitch_scale = randf_range(0.8,1.2)
 	# Applies pressure based jumping
 	if Input.is_action_just_released("jump") and !is_on_floor() and velocity.y < -10:
 		velocity.y = -10
@@ -85,6 +93,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func damage(value : int):
+	hurt_sound.play()
+	hurt_sound.pitch_scale = randf_range(0.8,1.2)
 	immunityTimer.start()
 	health -= value
 	print(health)

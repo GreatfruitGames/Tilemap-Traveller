@@ -7,6 +7,7 @@ extends Node2D
 @export var player : CharacterBody2D
 @export var layers : AnimatedSprite2D
 @export var camera : Camera2D
+@export var change_sound : AudioStreamPlayer2D
 
 # Holds each screen that makes up the level
 @export var screens : Array[Node2D]
@@ -33,6 +34,8 @@ func _process(delta: float) -> void:
 
 # When the player changes the map, the other maps are disabled and the layer UI is updated
 func on_active_changed():
+	change_sound.play()
+	change_sound.pitch_scale = randf_range(0.8,1.2)
 	if activeMap == 0:
 		layers.frame = 0
 		backgroundMap.enable()

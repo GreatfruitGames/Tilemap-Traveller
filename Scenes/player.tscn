@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://csid7bivl7x0v" path="res://Art/heart-Sheet.png" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://vl35oxp0liyc" path="res://Scripts/health_container.gd" id="3_vgqql"]
 [ext_resource type="Texture2D" uid="uid://y1s65iuonxqj" path="res://Art/coin-Sheet.png" id="5_fkybt"]
+[ext_resource type="AudioStream" uid="uid://b8sxic1v2lx0r" path="res://Art/SFX/jump.wav" id="6_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://bxfp1xit4isi8" path="res://Art/SFX/hitHurt.wav" id="7_8erm5"]
+[ext_resource type="AudioStream" uid="uid://2p5o13saphdn" path="res://Art/SFX/pickupCoin.wav" id="8_f1ek2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7ey7"]
 radius = 3.75
@@ -76,9 +79,12 @@ bg_color = Color(0.96731794, 0.64980984, 0.6381937, 0.5019608)
 atlas = ExtResource("5_fkybt")
 region = Rect2(0, 0, 8, 8)
 
-[node name="Player" type="CharacterBody2D" unique_id=201996133 node_paths=PackedStringArray("lives_tracker", "coins_tracker", "health_container", "respawn_cast", "coyoteTimer", "jumpTimer", "immunityTimer")]
+[node name="Player" type="CharacterBody2D" unique_id=201996133 node_paths=PackedStringArray("coin_sound", "hurt_sound", "jump_sound", "lives_tracker", "coins_tracker", "health_container", "respawn_cast", "coyoteTimer", "jumpTimer", "immunityTimer")]
 collision_mask = 22
 script = ExtResource("1_cvnsp")
+coin_sound = NodePath("coin sound")
+hurt_sound = NodePath("hurt sound")
+jump_sound = NodePath("jump sound")
 lives_tracker = NodePath("CanvasLayer/PanelContainer/RichTextLabel")
 coins_tracker = NodePath("CanvasLayer/PanelContainer2/RichTextLabel")
 health_container = NodePath("CanvasLayer/HUD Container/Health Container")
@@ -196,3 +202,13 @@ texture = SubResource("AtlasTexture_tty2r")
 target_position = Vector2(0, 3)
 collision_mask = 2
 hit_from_inside = true
+
+[node name="jump sound" type="AudioStreamPlayer2D" parent="." unique_id=1264689716]
+stream = ExtResource("6_x3wgy")
+bus = &"SFX"
+
+[node name="hurt sound" type="AudioStreamPlayer2D" parent="." unique_id=483521930]
+stream = ExtResource("7_8erm5")
+
+[node name="coin sound" type="AudioStreamPlayer2D" parent="." unique_id=618934336]
+stream = ExtResource("8_f1ek2")
